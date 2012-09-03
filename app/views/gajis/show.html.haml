@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Karyawan:
+  = @gaji.karyawan_id
+%p
+  %b Bonus:
+  = @gaji.bonus
+%p
+  %b Pajak:
+  = @gaji.pajak
+%p
+  %b Jamsostek:
+  = @gaji.jamsostek
+%p
+  %b Other value:
+  = @gaji.other_value
+%p
+  %b Other desc:
+  = @gaji.other_desc
+
+= link_to 'Edit', edit_gaji_path(@gaji)
+\|
+= link_to 'Back', gajis_path

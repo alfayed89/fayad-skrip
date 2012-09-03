@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Campany:
+  = @pengalaman.campany
+%p
+  %b Job title:
+  = @pengalaman.job_title
+%p
+  %b Job desc:
+  = @pengalaman.job_desc
+%p
+  %b From:
+  = @pengalaman.from
+%p
+  %b To:
+  = @pengalaman.to
+%p
+  %b Reason:
+  = @pengalaman.reason
+
+= link_to 'Edit', edit_pengalaman_path(@pengalaman)
+\|
+= link_to 'Back', pengalamen_path

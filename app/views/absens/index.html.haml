@@ -1,0 +1,23 @@
+%h1 Listing absens
+
+%table
+  %tr
+    %th Karyawan
+    %th Status
+    %th Reason
+    %th
+    %th
+    %th
+
+  - @absens.each do |absen|
+    %tr
+      %td= absen.karyawan_id
+      %td= absen.status
+      %td= absen.reason
+      %td= link_to 'Show', absen
+      %td= link_to 'Edit', edit_absen_path(absen)
+      %td= link_to 'Destroy', absen, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Absen', new_absen_path

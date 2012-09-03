@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Karyawan:
+  = @pendidikan.karyawan_id
+%p
+  %b Grade:
+  = @pendidikan.grade
+%p
+  %b Institusi:
+  = @pendidikan.institusi
+%p
+  %b Jurusan:
+  = @pendidikan.jurusan
+%p
+  %b From:
+  = @pendidikan.from
+%p
+  %b To:
+  = @pendidikan.to
+
+= link_to 'Edit', edit_pendidikan_path(@pendidikan)
+\|
+= link_to 'Back', pendidikans_path

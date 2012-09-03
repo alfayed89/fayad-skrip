@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Nama:
+  = @kotum.nama
+%p
+  %b Provinsi:
+  = @kotum.provinsi
+
+= link_to 'Edit', edit_kotum_path(@kotum)
+\|
+= link_to 'Back', kota_path

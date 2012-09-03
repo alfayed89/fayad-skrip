@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Karyawan:
+  = @holyday.karyawan_id
+%p
+  %b From:
+  = @holyday.from
+%p
+  %b To:
+  = @holyday.to
+%p
+  %b Subsitution:
+  = @holyday.subsitution_id
+%p
+  %b Emergency addres:
+  = @holyday.emergency_addres
+%p
+  %b Emergency phone:
+  = @holyday.emergency_phone
+%p
+  %b Keterangan:
+  = @holyday.keterangan
+
+= link_to 'Edit', edit_holyday_path(@holyday)
+\|
+= link_to 'Back', holydays_path

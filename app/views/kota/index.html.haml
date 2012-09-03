@@ -1,0 +1,21 @@
+%h1 Listing kota
+
+%table
+  %tr
+    %th Nama
+    %th Provinsi
+    %th
+    %th
+    %th
+
+  - @kota.each do |kotum|
+    %tr
+      %td= kotum.nama
+      %td= kotum.provinsi
+      %td= link_to 'Show', kotum
+      %td= link_to 'Edit', edit_kotum_path(kotum)
+      %td= link_to 'Destroy', kotum, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Kotum', new_kotum_path

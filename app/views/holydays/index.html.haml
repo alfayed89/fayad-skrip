@@ -1,0 +1,31 @@
+%h1 Listing holydays
+
+%table
+  %tr
+    %th Karyawan
+    %th From
+    %th To
+    %th Subsitution
+    %th Emergency addres
+    %th Emergency phone
+    %th Keterangan
+    %th
+    %th
+    %th
+
+  - @holydays.each do |holyday|
+    %tr
+      %td= holyday.karyawan_id
+      %td= holyday.from
+      %td= holyday.to
+      %td= holyday.subsitution_id
+      %td= holyday.emergency_addres
+      %td= holyday.emergency_phone
+      %td= holyday.keterangan
+      %td= link_to 'Show', holyday
+      %td= link_to 'Edit', edit_holyday_path(holyday)
+      %td= link_to 'Destroy', holyday, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Holyday', new_holyday_path

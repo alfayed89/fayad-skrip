@@ -1,0 +1,21 @@
+%h1 Listing divisis
+
+%table
+  %tr
+    %th Nama
+    %th Keterangan
+    %th
+    %th
+    %th
+
+  - @divisis.each do |divisi|
+    %tr
+      %td= divisi.nama
+      %td= divisi.keterangan
+      %td= link_to 'Show', divisi
+      %td= link_to 'Edit', edit_divisi_path(divisi)
+      %td= link_to 'Destroy', divisi, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Divisi', new_divisi_path

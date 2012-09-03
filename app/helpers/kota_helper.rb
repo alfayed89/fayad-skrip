@@ -1,0 +1,2 @@
+module KotaHelper
+end

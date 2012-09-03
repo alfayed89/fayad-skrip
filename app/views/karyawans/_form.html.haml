@@ -1,0 +1,43 @@
+= form_for @karyawan do |f|
+  -if @karyawan.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@karyawan.errors.count, "error")} prohibited this karyawan from being saved:"
+      %ul
+        - @karyawan.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nama_lengkap
+    = f.text_field :nama_lengkap
+  .field
+    = f.label :nik
+    = f.text_field :nik
+  .field
+    = f.label :tempat_lahir
+    = f.text_field :tempat_lahir
+  .field
+    = f.label :tangal_lahir
+    = f.datetime_select :tangal_lahir
+  .field
+    = f.label :alamat
+    = f.text_field :alamat
+  .field
+    = f.label :kota_id
+    = f.number_field :kota_id
+  .field
+    = f.label :provinsi_id
+    = f.number_field :provinsi_id
+  .field
+    = f.label :kelamin
+    = f.text_field :kelamin
+  .field
+    = f.label :agama
+    = f.text_field :agama
+  .field
+    = f.label :npwp
+    = f.text_field :npwp
+  .field
+    = f.label :jabatan_id
+    = f.number_field :jabatan_id
+  .actions
+    = f.submit 'Save'

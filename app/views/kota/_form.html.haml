@@ -1,0 +1,16 @@
+= form_for @kotum do |f|
+  -if @kotum.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@kotum.errors.count, "error")} prohibited this kotum from being saved:"
+      %ul
+        - @kotum.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nama
+    = f.text_field :nama
+  .field
+    = f.label :provinsi
+    = f.number_field :provinsi
+  .actions
+    = f.submit 'Save'

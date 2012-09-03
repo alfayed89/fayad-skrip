@@ -1,0 +1,39 @@
+%h1 Listing karyawans
+
+%table
+  %tr
+    %th Nama lengkap
+    %th Nik
+    %th Tempat lahir
+    %th Tangal lahir
+    %th Alamat
+    %th Kota
+    %th Provinsi
+    %th Kelamin
+    %th Agama
+    %th Npwp
+    %th Jabatan
+    %th
+    %th
+    %th
+
+  - @karyawans.each do |karyawan|
+    %tr
+      %td= karyawan.nama_lengkap
+      %td= karyawan.nik
+      %td= karyawan.tempat_lahir
+      %td= karyawan.tangal_lahir
+      %td= karyawan.alamat
+      %td= karyawan.kota_id
+      %td= karyawan.provinsi_id
+      %td= karyawan.kelamin
+      %td= karyawan.agama
+      %td= karyawan.npwp
+      %td= karyawan.jabatan_id
+      %td= link_to 'Show', karyawan
+      %td= link_to 'Edit', edit_karyawan_path(karyawan)
+      %td= link_to 'Destroy', karyawan, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Karyawan', new_karyawan_path

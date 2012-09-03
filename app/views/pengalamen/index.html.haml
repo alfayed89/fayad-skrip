@@ -1,0 +1,29 @@
+%h1 Listing pengalamen
+
+%table
+  %tr
+    %th Campany
+    %th Job title
+    %th Job desc
+    %th From
+    %th To
+    %th Reason
+    %th
+    %th
+    %th
+
+  - @pengalamen.each do |pengalaman|
+    %tr
+      %td= pengalaman.campany
+      %td= pengalaman.job_title
+      %td= pengalaman.job_desc
+      %td= pengalaman.from
+      %td= pengalaman.to
+      %td= pengalaman.reason
+      %td= link_to 'Show', pengalaman
+      %td= link_to 'Edit', edit_pengalaman_path(pengalaman)
+      %td= link_to 'Destroy', pengalaman, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Pengalaman', new_pengalaman_path

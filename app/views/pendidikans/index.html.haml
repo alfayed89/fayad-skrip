@@ -1,0 +1,29 @@
+%h1 Listing pendidikans
+
+%table
+  %tr
+    %th Karyawan
+    %th Grade
+    %th Institusi
+    %th Jurusan
+    %th From
+    %th To
+    %th
+    %th
+    %th
+
+  - @pendidikans.each do |pendidikan|
+    %tr
+      %td= pendidikan.karyawan_id
+      %td= pendidikan.grade
+      %td= pendidikan.institusi
+      %td= pendidikan.jurusan
+      %td= pendidikan.from
+      %td= pendidikan.to
+      %td= link_to 'Show', pendidikan
+      %td= link_to 'Edit', edit_pendidikan_path(pendidikan)
+      %td= link_to 'Destroy', pendidikan, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Pendidikan', new_pendidikan_path
