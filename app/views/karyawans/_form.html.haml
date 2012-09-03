@@ -16,17 +16,14 @@
     = f.label :tempat_lahir
     = f.text_field :tempat_lahir
   .field
-    = f.label :tangal_lahir
-    = f.datetime_select :tangal_lahir
+    = f.label :tanggal_lahir
+    = f.datetime_select :tanggal_lahir, :start_year => 1960
   .field
     = f.label :alamat
     = f.text_field :alamat
   .field
     = f.label :kota_id
     = f.number_field :kota_id
-  .field
-    = f.label :provinsi_id
-    = f.number_field :provinsi_id
   .field
     = f.label :kelamin
     = f.text_field :kelamin
