@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903163434) do
+ActiveRecord::Schema.define(:version => 20120903164613) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(:version => 20120903163434) do
 
   create_table "kota", :force => true do |t|
     t.string   "nama"
-    t.integer  "provinsi"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "provinsi_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "pendidikans", :force => true do |t|
@@ -127,8 +127,9 @@ ActiveRecord::Schema.define(:version => 20120903163434) do
     t.string   "role_type"
     t.string   "user_name"
     t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "karyawan_id"
   end
 
 end
