@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:barock19/active_admin.git
+  remote: https://github.com/barock19/active_admin.git
   revision: 996d0a92cfb0e705bf201bae705671cefaf54add
   specs:
     activeadmin (0.5.0)
