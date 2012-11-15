@@ -3,7 +3,6 @@ gem 'rails', '3.2.8'
 gem 'activerecord-postgresql-adapter'
 gem 'pg'
 gem 'compass-rails', '~> 1.0.3'
-gem 'zurb-foundation', '~> 3.0.9'
 gem 'activeadmin' , :git => 'https://github.com/barock19/active_admin.git'
 group :test,  :development do
   gem 'rspec-rails'
