@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115092308) do
+ActiveRecord::Schema.define(:version => 20121115101612) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20121115092308) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "cities", :force => true do |t|
+    t.string   "nama"
+    t.integer  "province_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "divisis", :force => true do |t|
     t.string   "nama"
     t.text     "keterangan"
@@ -109,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20121115092308) do
     t.string   "tempat_lahir"
     t.datetime "tanggal_lahir"
     t.string   "alamat"
-    t.integer  "kota_id"
+    t.integer  "city_id"
     t.integer  "provinsi_id"
     t.string   "kelamin"
     t.string   "agama"
@@ -118,13 +125,6 @@ ActiveRecord::Schema.define(:version => 20121115092308) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "gaji_pokok"
-  end
-
-  create_table "kota", :force => true do |t|
-    t.string   "nama"
-    t.integer  "provinsi_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "pendidikans", :force => true do |t|
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20121115092308) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "provinsis", :force => true do |t|
+  create_table "provinces", :force => true do |t|
     t.string   "nama"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

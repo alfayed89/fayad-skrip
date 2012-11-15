@@ -1,2 +1,0 @@
-module HolydaysHelper
-end
