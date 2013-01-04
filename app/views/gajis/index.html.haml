@@ -1,0 +1,29 @@
+%h1 Data Gaji Karyawan
+
+%table
+  %tr
+    %th Bonus
+    %th Jamsostek
+    %th Pajak
+    %th Karyawan
+    %th Other desc
+    %th Other value
+    %th
+    %th
+    %th
+
+  - @gajis.each do |gaji|
+    %tr
+      %td= gaji.bonus
+      %td= gaji.jamsostek
+      %td= gaji.pajak
+      %td= gaji.karyawan_id
+      %td= gaji.other_desc
+      %td= gaji.other_value
+      %td= link_to 'Show', gaji
+      %td= link_to 'Edit', edit_gaji_path(gaji)
+      %td= link_to 'Destroy', gaji, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Gaji', new_gaji_path

@@ -1,13 +1,30 @@
-%ul.menu
+-# .well
+.row-fluid
+	.span4
+		.img-polaroid.img-circle
+			=image_tag('https://secure.gravatar.com/avatar/9601cebd47e3bc0ebb245caca9290b9c?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png', :class => 'img-circle')
+	.span8.right-text
+		%h4 Zidni Mubarock
+		%p
+			%small
+				=link_to '<i class="icon icon-pencil"></i> Edit'.html_safe
+				|
+				=link_to '<i class="icon icon-unlocked"></i> Keluar'.html_safe, destroy_karyawan_session_path, :method => :delete
+%hr
+%ul.nav.nav-tabs.nav-stacked
 	%li 
-		= link_to "Karyawan", karyawans_path
-	%li 
-		= link_to "Gaji", gajis_path
-	%li 
-		= link_to "Cuti", holydays_path
+		=link_to 'Karyawan',  karyawans_path
 	%li
-		= link_to "Absen", absens_path
+		=link_to 'Absen', absens_path
 	%li
-		= link_to "Pengalaman", pengalamen_path
-	%li 
-		= link_to "Riwayat Pendidikan", pendidikans_path
+		=link_to 'Cuti', holydays_path
+	%li
+		=link_to 'Jabatan', jabatans_path	
+	%li
+		=link_to 'Divisi', divisis_path
+	%li
+		=link_to 'Pendidikan', pendidikans_path
+	%li
+		=link_to 'Pengalaman', pengalamen_path
+	%li
+		=link_to 'Gaji Karyawan', gajis_path

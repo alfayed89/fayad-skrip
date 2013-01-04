@@ -1,0 +1,30 @@
+%h2 Data Pengalaman Karyawan
+
+%table
+  %tr
+    %th Campany
+    %th From
+    %th To
+    %th Job desc
+    %th Job title
+    %th Reason
+    %th Karyawan
+    %th
+    %th
+    %th
+
+  - @pengalamen.each do |pengalaman|
+    %tr
+      %td= pengalaman.campany
+      %td= pengalaman.from
+      %td= pengalaman.to
+      %td= pengalaman.job_desc
+      %td= pengalaman.job_title
+      %td= pengalaman.reason
+      %td= pengalaman.karyawan_id
+      %td= link_to 'Show', pengalaman
+      %td= link_to 'Edit', edit_pengalaman_path(pengalaman)
+      %td= link_to 'Destroy', pengalaman, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+

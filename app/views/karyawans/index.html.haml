@@ -1,0 +1,29 @@
+%h2 Daftar Karyawan
+%hr
+.row-fluid
+	%table.table.table-bordered.table-stripped
+		.thead
+			%tr
+				%th.span2 Nama lengkap
+				%th Kelamin
+				%th Npwp
+				%th Gaji pokok
+				%th Jabatan
+				%th Email
+				%th Action
+		.tbody
+			- @karyawans.each do |karyawan|
+				%tr
+					%td= karyawan.nama_lengkap
+					%td= karyawan.kelamin
+					%td= karyawan.npwp
+					%td= karyawan.gaji_pokok
+					%td= karyawan.jabatan_id
+					%td= karyawan.email
+					%td.span3
+						.center-text
+							= link_to 'Show', karyawan
+							= link_to 'Edit', edit_karyawan_path(karyawan)
+							= link_to 'Destroy', karyawan, method: :delete, data: { confirm: 'Are you sure?' }
+%hr
+= link_to 'New Karyawan', new_karyawan_path

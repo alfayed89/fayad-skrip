@@ -24,7 +24,7 @@ describe HolydaysController do
   # Holyday. As you add validations to Holyday, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "karyawan_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe HolydaysController do
       it "assigns a newly created but unsaved holyday as @holyday" do
         # Trigger the behavior that occurs when invalid params are submitted
         Holyday.any_instance.stub(:save).and_return(false)
-        post :create, {:holyday => {}}, valid_session
+        post :create, {:holyday => { "karyawan_id" => "invalid value" }}, valid_session
         assigns(:holyday).should be_a_new(Holyday)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Holyday.any_instance.stub(:save).and_return(false)
-        post :create, {:holyday => {}}, valid_session
+        post :create, {:holyday => { "karyawan_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe HolydaysController do
         # specifies that the Holyday created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Holyday.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => holyday.to_param, :holyday => {'these' => 'params'}}, valid_session
+        Holyday.any_instance.should_receive(:update_attributes).with({ "karyawan_id" => "1" })
+        put :update, {:id => holyday.to_param, :holyday => { "karyawan_id" => "1" }}, valid_session
       end
 
       it "assigns the requested holyday as @holyday" do
@@ -132,7 +132,7 @@ describe HolydaysController do
         holyday = Holyday.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Holyday.any_instance.stub(:save).and_return(false)
-        put :update, {:id => holyday.to_param, :holyday => {}}, valid_session
+        put :update, {:id => holyday.to_param, :holyday => { "karyawan_id" => "invalid value" }}, valid_session
         assigns(:holyday).should eq(holyday)
       end
 
@@ -140,7 +140,7 @@ describe HolydaysController do
         holyday = Holyday.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Holyday.any_instance.stub(:save).and_return(false)
-        put :update, {:id => holyday.to_param, :holyday => {}}, valid_session
+        put :update, {:id => holyday.to_param, :holyday => { "karyawan_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

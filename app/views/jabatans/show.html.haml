@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Divisi:
+  = @jabatan.divisi_id
+%p
+  %b Holyday quota:
+  = @jabatan.holyday_quota
+%p
+  %b Keterangan:
+  = @jabatan.keterangan
+%p
+  %b Nama:
+  = @jabatan.nama
+
+= link_to 'Edit', edit_jabatan_path(@jabatan)
+\|
+= link_to 'Back', jabatans_path

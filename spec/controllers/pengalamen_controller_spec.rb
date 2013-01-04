@@ -24,7 +24,7 @@ describe PengalamenController do
   # Pengalaman. As you add validations to Pengalaman, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "campany" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe PengalamenController do
       it "assigns a newly created but unsaved pengalaman as @pengalaman" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pengalaman.any_instance.stub(:save).and_return(false)
-        post :create, {:pengalaman => {}}, valid_session
+        post :create, {:pengalaman => { "campany" => "invalid value" }}, valid_session
         assigns(:pengalaman).should be_a_new(Pengalaman)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pengalaman.any_instance.stub(:save).and_return(false)
-        post :create, {:pengalaman => {}}, valid_session
+        post :create, {:pengalaman => { "campany" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe PengalamenController do
         # specifies that the Pengalaman created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Pengalaman.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => pengalaman.to_param, :pengalaman => {'these' => 'params'}}, valid_session
+        Pengalaman.any_instance.should_receive(:update_attributes).with({ "campany" => "MyString" })
+        put :update, {:id => pengalaman.to_param, :pengalaman => { "campany" => "MyString" }}, valid_session
       end
 
       it "assigns the requested pengalaman as @pengalaman" do
@@ -132,7 +132,7 @@ describe PengalamenController do
         pengalaman = Pengalaman.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pengalaman.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pengalaman.to_param, :pengalaman => {}}, valid_session
+        put :update, {:id => pengalaman.to_param, :pengalaman => { "campany" => "invalid value" }}, valid_session
         assigns(:pengalaman).should eq(pengalaman)
       end
 
@@ -140,7 +140,7 @@ describe PengalamenController do
         pengalaman = Pengalaman.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pengalaman.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pengalaman.to_param, :pengalaman => {}}, valid_session
+        put :update, {:id => pengalaman.to_param, :pengalaman => { "campany" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

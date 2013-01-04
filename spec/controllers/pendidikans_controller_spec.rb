@@ -24,7 +24,7 @@ describe PendidikansController do
   # Pendidikan. As you add validations to Pendidikan, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "from" => "2013-01-03" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe PendidikansController do
       it "assigns a newly created but unsaved pendidikan as @pendidikan" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pendidikan.any_instance.stub(:save).and_return(false)
-        post :create, {:pendidikan => {}}, valid_session
+        post :create, {:pendidikan => { "from" => "invalid value" }}, valid_session
         assigns(:pendidikan).should be_a_new(Pendidikan)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pendidikan.any_instance.stub(:save).and_return(false)
-        post :create, {:pendidikan => {}}, valid_session
+        post :create, {:pendidikan => { "from" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe PendidikansController do
         # specifies that the Pendidikan created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Pendidikan.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => pendidikan.to_param, :pendidikan => {'these' => 'params'}}, valid_session
+        Pendidikan.any_instance.should_receive(:update_attributes).with({ "from" => "2013-01-03" })
+        put :update, {:id => pendidikan.to_param, :pendidikan => { "from" => "2013-01-03" }}, valid_session
       end
 
       it "assigns the requested pendidikan as @pendidikan" do
@@ -132,7 +132,7 @@ describe PendidikansController do
         pendidikan = Pendidikan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pendidikan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pendidikan.to_param, :pendidikan => {}}, valid_session
+        put :update, {:id => pendidikan.to_param, :pendidikan => { "from" => "invalid value" }}, valid_session
         assigns(:pendidikan).should eq(pendidikan)
       end
 
@@ -140,7 +140,7 @@ describe PendidikansController do
         pendidikan = Pendidikan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pendidikan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pendidikan.to_param, :pendidikan => {}}, valid_session
+        put :update, {:id => pendidikan.to_param, :pendidikan => { "from" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

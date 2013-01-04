@@ -24,7 +24,7 @@ describe AbsensController do
   # Absen. As you add validations to Absen, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "karyawan_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe AbsensController do
       it "assigns a newly created but unsaved absen as @absen" do
         # Trigger the behavior that occurs when invalid params are submitted
         Absen.any_instance.stub(:save).and_return(false)
-        post :create, {:absen => {}}, valid_session
+        post :create, {:absen => { "karyawan_id" => "invalid value" }}, valid_session
         assigns(:absen).should be_a_new(Absen)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Absen.any_instance.stub(:save).and_return(false)
-        post :create, {:absen => {}}, valid_session
+        post :create, {:absen => { "karyawan_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe AbsensController do
         # specifies that the Absen created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Absen.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => absen.to_param, :absen => {'these' => 'params'}}, valid_session
+        Absen.any_instance.should_receive(:update_attributes).with({ "karyawan_id" => "1" })
+        put :update, {:id => absen.to_param, :absen => { "karyawan_id" => "1" }}, valid_session
       end
 
       it "assigns the requested absen as @absen" do
@@ -132,7 +132,7 @@ describe AbsensController do
         absen = Absen.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Absen.any_instance.stub(:save).and_return(false)
-        put :update, {:id => absen.to_param, :absen => {}}, valid_session
+        put :update, {:id => absen.to_param, :absen => { "karyawan_id" => "invalid value" }}, valid_session
         assigns(:absen).should eq(absen)
       end
 
@@ -140,7 +140,7 @@ describe AbsensController do
         absen = Absen.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Absen.any_instance.stub(:save).and_return(false)
-        put :update, {:id => absen.to_param, :absen => {}}, valid_session
+        put :update, {:id => absen.to_param, :absen => { "karyawan_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

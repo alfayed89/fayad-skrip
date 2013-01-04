@@ -1,0 +1,25 @@
+%h2 Daftar Jabatan Perusahaan
+
+%table
+  %tr
+    %th Divisi
+    %th Holyday quota
+    %th Keterangan
+    %th Nama
+    %th
+    %th
+    %th
+
+  - @jabatans.each do |jabatan|
+    %tr
+      %td= jabatan.divisi_id
+      %td= jabatan.holyday_quota
+      %td= jabatan.keterangan
+      %td= jabatan.nama
+      %td= link_to 'Show', jabatan
+      %td= link_to 'Edit', edit_jabatan_path(jabatan)
+      %td= link_to 'Destroy', jabatan, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Jabatan', new_jabatan_path

@@ -1,0 +1,9 @@
+# Have the server running in screen 1
+#
+# Stuff is used so that when you exit the stuff-ed program, you drop back
+# to the bash shell for that screen instead of immediately exiting that
+# screen. This is useful for "^c, up-arrow, enter" restarting of programs.
+screen -t server 1
+stuff "tail -f log/*\012"
+# Finally have a command line prompt at the project root in screen 4
+screen -t project_root 2

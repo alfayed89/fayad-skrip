@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'rails', '3.2.8'
 gem 'activerecord-postgresql-adapter'
 gem 'pg'
 gem 'compass-rails', '~> 1.0.3'
-gem 'activeadmin' , :git => 'https://github.com/barock19/active_admin.git'
+# gem 'activeadmin' , :git => 'https://github.com/barock19/active_admin.git'
+gem 'devise'
+gem 'cancan'
 group :test,  :development do
   gem 'rspec-rails'
   gem 'growl'
@@ -17,7 +20,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
- 
+  gem 'bootstrap-sass'
 end
 gem 'jquery-rails'
 gem "haml", ">= 3.1.6"

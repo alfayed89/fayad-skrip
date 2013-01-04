@@ -9,17 +9,21 @@
 		= javascript_include_tag :application
 		= csrf_meta_tags
 	%body
-		.container#top-nav
-			.row
-				.twelve.columns			
-					#top-menu
-						= render 'layouts/navigation'
-		.conatiner#top-header
-			.row
-				.twelve.columns
-					%header#hero-header
-						%h1 Apake
-		.container#main
-			.row
-				.twelve.colums
-					= yield
+		.container
+			.head
+				.row-fluid
+					.span2
+						=image_tag('/assets/logo.jpg')
+				%hr
+			.row-fluid
+				-if current_karyawan
+					.span3
+						.sidebar
+							=render 'layouts/navigation'
+				.span9
+					.body
+						=render 'layouts/messages'
+						=yield
+			.footer
+				%hr
+				%p Copyright @ 2012 PT. Djarum Indonesia .tbk

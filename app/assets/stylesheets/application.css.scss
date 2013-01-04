@@ -9,8 +9,26 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
 */
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "iconmoon";
+[class^="icon-"], [class*=" icon-"] {
+font-family: 'IcoMoon';
+font-style: normal;
+font-weight: normal;
+speak: none;
+background-image: none;
+background-position: inherit;
+display: inline;
+margin-top:0px;
+}
+.right-text {
+	text-align:right;
+}
+.center-text{
+	text-align:center;
+}
 body {
 	font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
 }

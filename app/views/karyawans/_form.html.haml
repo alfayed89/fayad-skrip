@@ -1,0 +1,57 @@
+= form_for @karyawan , :html => {:class => 'form'} do |f|
+	- if @karyawan.errors.any?
+		#error_explanation.alert.alert-danger
+			%h5= "#{pluralize(@karyawan.errors.count, "error")} prohibited this karyawan from being saved:"
+			%ul
+				- @karyawan.errors.full_messages.each do |msg|
+					%li= msg
+	.form-horizontal
+		.control-group
+			= f.label :nama_lengkap, :class => 'control-label'
+			.controls
+				= f.text_field :nama_lengkap
+		.control-group
+			= f.label :alamat, :class => 'control-label'
+			.controls
+				= f.text_area :alamat, :rows=> 3
+		.control-group
+			= f.label :kelamin, :class => 'control-label'
+			.controls
+				= f.select :kelamin, options_for_select([['Choose One']]+[['Perempuan', 'P'], ['laki-kai', 'L']], :selected => f.object.kelamin ) 
+		.control-group
+			= f.label :npwp, :class => 'control-label'
+			.controls
+				= f.text_field :npwp
+		.control-group
+			= f.label :tanggal_lahir, :class => 'control-label'
+			.controls
+				= f.date_select :tanggal_lahir, :start_year => (1960), :end_year => (1990)
+		.control-group
+			= f.label :tempat_lahir,:class => 'control-label'
+			.controls
+				= f.text_field :tempat_lahir
+		.control-group
+			= f.label :gaji_pokok, :class => 'control-label'
+			.controls
+				= f.number_field :gaji_pokok
+		.control-group
+			= f.label :city_id, :class => 'control-label'
+			.controls
+				= f.select :city_id, options_for_select([['Choose One']]+(City.all.map{|c| [c.name, c.id]}) , :selected => f.object.city_id )
+		.control-group
+			= f.label :jabatan_id, :class => 'control-label'
+			.controls
+				= f.select :jabatan_id, options_for_select([['Choose One']]+(Jabatan.all.map{|c| [c.name, c.id]}), :selected => f.object.jabatan_id )
+		.control-group
+			= f.label :email, :class => 'control-label'
+			.controls
+				= f.text_field :email
+		%hr
+		%p Site Role
+		.control-group
+			=f.label :role, :class => 'control-label'
+			.controls
+				=f.select :role, options_for_select( Karyawan::ROLES.map{|r| [r.humanize, r]}, :selected => (f.object.role.nil? ? Karyawan::ROLES.last : f.object.role ))
+		.form-actions
+			= f.submit 'Save', :class => 'btn btn-large'
+			

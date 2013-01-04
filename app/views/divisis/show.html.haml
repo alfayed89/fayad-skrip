@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Keterangan:
+  = @divisi.keterangan
+%p
+  %b Nama:
+  = @divisi.nama
+
+= link_to 'Edit', edit_divisi_path(@divisi)
+\|
+= link_to 'Back', divisis_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115101612) do
+ActiveRecord::Schema.define(:version => 20130104045647) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20121115101612) do
     t.text     "reason"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.date     "absen_for"
   end
 
   create_table "active_admin_comments", :force => true do |t|
@@ -49,6 +50,9 @@ ActiveRecord::Schema.define(:version => 20121115101612) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "roles_mask"
+    t.integer  "user_id"
+    t.integer  "karyawan_id"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -85,20 +89,22 @@ ActiveRecord::Schema.define(:version => 20121115101612) do
     t.integer  "jamsostek"
     t.string   "other_value"
     t.string   "other_desc"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "final_amount"
   end
 
   create_table "holydays", :force => true do |t|
     t.integer  "karyawan_id"
-    t.datetime "from"
-    t.datetime "to"
+    t.date     "from"
+    t.date     "to"
     t.integer  "subsitution_id"
-    t.text     "emergency_addres"
+    t.text     "emergency_address"
     t.string   "emergency_phone"
     t.text     "keterangan"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.boolean  "approved"
   end
 
   create_table "jabatans", :force => true do |t|
@@ -114,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20121115101612) do
     t.string   "nama_lengkap"
     t.string   "nik"
     t.string   "tempat_lahir"
-    t.datetime "tanggal_lahir"
+    t.date     "tanggal_lahir"
     t.string   "alamat"
     t.integer  "city_id"
     t.integer  "provinsi_id"
@@ -122,31 +128,46 @@ ActiveRecord::Schema.define(:version => 20121115101612) do
     t.string   "agama"
     t.string   "npwp"
     t.integer  "jabatan_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "gaji_pokok"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "roles_mask"
+    t.string   "role"
   end
 
+  add_index "karyawans", ["email"], :name => "index_karyawans_on_email", :unique => true
+  add_index "karyawans", ["reset_password_token"], :name => "index_karyawans_on_reset_password_token", :unique => true
+
   create_table "pendidikans", :force => true do |t|
-    t.integer  "karyawan_id"
     t.string   "grade"
     t.string   "institusi"
     t.string   "jurusan"
-    t.datetime "from"
-    t.datetime "to"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.date     "from"
+    t.date     "to"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pengalamen", :force => true do |t|
-    t.string   "campany"
+    t.string   "company"
     t.string   "job_title"
     t.text     "job_desc"
-    t.datetime "from"
-    t.datetime "to"
+    t.date     "from"
+    t.date     "to"
     t.text     "reason"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "karyawan_id"
   end
 
   create_table "provinces", :force => true do |t|

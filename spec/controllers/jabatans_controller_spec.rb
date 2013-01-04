@@ -24,7 +24,7 @@ describe JabatansController do
   # Jabatan. As you add validations to Jabatan, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "divisi_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe JabatansController do
       it "assigns a newly created but unsaved jabatan as @jabatan" do
         # Trigger the behavior that occurs when invalid params are submitted
         Jabatan.any_instance.stub(:save).and_return(false)
-        post :create, {:jabatan => {}}, valid_session
+        post :create, {:jabatan => { "divisi_id" => "invalid value" }}, valid_session
         assigns(:jabatan).should be_a_new(Jabatan)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Jabatan.any_instance.stub(:save).and_return(false)
-        post :create, {:jabatan => {}}, valid_session
+        post :create, {:jabatan => { "divisi_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe JabatansController do
         # specifies that the Jabatan created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Jabatan.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => jabatan.to_param, :jabatan => {'these' => 'params'}}, valid_session
+        Jabatan.any_instance.should_receive(:update_attributes).with({ "divisi_id" => "1" })
+        put :update, {:id => jabatan.to_param, :jabatan => { "divisi_id" => "1" }}, valid_session
       end
 
       it "assigns the requested jabatan as @jabatan" do
@@ -132,7 +132,7 @@ describe JabatansController do
         jabatan = Jabatan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Jabatan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => jabatan.to_param, :jabatan => {}}, valid_session
+        put :update, {:id => jabatan.to_param, :jabatan => { "divisi_id" => "invalid value" }}, valid_session
         assigns(:jabatan).should eq(jabatan)
       end
 
@@ -140,7 +140,7 @@ describe JabatansController do
         jabatan = Jabatan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Jabatan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => jabatan.to_param, :jabatan => {}}, valid_session
+        put :update, {:id => jabatan.to_param, :jabatan => { "divisi_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

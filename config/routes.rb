@@ -1,31 +1,17 @@
 Fayad::Application.routes.draw do
-  ActiveAdmin.routes(self)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  get "dashboard/index"
 
-  resources :users
-
-  resources :divisis
-
-  resources :jabatans
-
-  resources :holydays
-
-  resources :absens
-
-  resources :gajis
-
-  resources :banks
-
-  resources :pengalamen
-
-  resources :kota
-
-  resources :provinsis
-
-  resources :pendidikans
-
+  devise_for :karyawans, :path => :user
   resources :karyawans
-
-  root :to => "home#index"
+  resources :absens, :except => [:create, :new]
+  resources :holydays,  :except => [:create, :new]
+  resources :jabatans
+  resources :pendidikans ,  :except => [:create, :new]
+  resources :pengalamen, :except => [:create, :new]
+  resources :gajis
+  resources :divisis
+  resources :cities
+  resources :provinces
+  root :to => 'dashboard#index'
 end

@@ -1,0 +1,34 @@
+= form_for @pendidikan , :html => {:class => 'form-horizontal'} do |f|
+	- if @pendidikan.errors.any?
+		#error_explanation.alert.alert-danger
+			%h5= "#{pluralize(@pendidikan.errors.count, "error")} prohibited this pendidikan from being saved:"
+			%ul
+				- @pendidikan.errors.full_messages.each do |msg|
+					%li= msg
+
+	.control-group
+		= f.label :from, :classs => 'control-label'
+		.controls
+			= f.date_select :from
+	.control-group
+		= f.label :to, :classs => 'control-label'
+		.controls
+			= f.date_select :to
+	.control-group
+		= f.label :karyawan_id, :classs => 'control-label'
+		.controls
+			= f.number_field :karyawan_id
+	.control-group
+		= f.label :grade, :classs => 'control-label'
+		.controls
+			= f.text_field :grade
+	.control-group
+		= f.label :institusi, :classs => 'control-label'
+		.controls
+			= f.text_field :institusi
+	.control-group
+		= f.label :jurusan, :classs => 'control-label'
+		.controls
+			= f.text_field :jurusan
+	.actions
+		= f.submit 'Save'

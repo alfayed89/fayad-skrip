@@ -1,0 +1,21 @@
+= form_for @absen, :html => {:class => 'form-horizontal'} do |f|
+	- if @absen.errors.any?
+		#error_explanation.alert.alert-danger
+			%h5= "#{pluralize(@absen.errors.count, "error")} prohibited this absen from being saved:"
+			%ul
+				- @absen.errors.full_messages.each do |msg|
+					%li= msg
+	.control-group
+		= f.label :karyawan_id, :class => 'control-label'
+		.controls
+			= f.number_field :karyawan_id
+	.control-group
+		= f.label :status, :class => 'control-label'
+		.controls
+			= f.text_field :status
+	.control-group
+		= f.label :reason, :class => 'control-label'
+		.controls
+			= f.text_field :reason
+	.form-actions
+		= f.submit 'Save'

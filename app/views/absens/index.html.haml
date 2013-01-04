@@ -1,0 +1,21 @@
+%h2 Data Absen Karyawan
+
+%table
+  %tr
+    %th Karyawan
+    %th Status
+    %th Reason
+    %th
+    %th
+    %th
+
+  - @absens.each do |absen|
+    %tr
+      %td= absen.karyawan_id
+      %td= absen.status
+      %td= absen.reason
+      %td= link_to 'Show', absen
+      %td= link_to 'Edit', edit_absen_path(absen)
+      %td= link_to 'Destroy', absen, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br

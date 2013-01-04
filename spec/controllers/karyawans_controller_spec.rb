@@ -24,7 +24,7 @@ describe KaryawansController do
   # Karyawan. As you add validations to Karyawan, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "nama_lengkap" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe KaryawansController do
       it "assigns a newly created but unsaved karyawan as @karyawan" do
         # Trigger the behavior that occurs when invalid params are submitted
         Karyawan.any_instance.stub(:save).and_return(false)
-        post :create, {:karyawan => {}}, valid_session
+        post :create, {:karyawan => { "nama_lengkap" => "invalid value" }}, valid_session
         assigns(:karyawan).should be_a_new(Karyawan)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Karyawan.any_instance.stub(:save).and_return(false)
-        post :create, {:karyawan => {}}, valid_session
+        post :create, {:karyawan => { "nama_lengkap" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe KaryawansController do
         # specifies that the Karyawan created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Karyawan.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => karyawan.to_param, :karyawan => {'these' => 'params'}}, valid_session
+        Karyawan.any_instance.should_receive(:update_attributes).with({ "nama_lengkap" => "MyString" })
+        put :update, {:id => karyawan.to_param, :karyawan => { "nama_lengkap" => "MyString" }}, valid_session
       end
 
       it "assigns the requested karyawan as @karyawan" do
@@ -132,7 +132,7 @@ describe KaryawansController do
         karyawan = Karyawan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Karyawan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => karyawan.to_param, :karyawan => {}}, valid_session
+        put :update, {:id => karyawan.to_param, :karyawan => { "nama_lengkap" => "invalid value" }}, valid_session
         assigns(:karyawan).should eq(karyawan)
       end
 
@@ -140,7 +140,7 @@ describe KaryawansController do
         karyawan = Karyawan.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Karyawan.any_instance.stub(:save).and_return(false)
-        put :update, {:id => karyawan.to_param, :karyawan => {}}, valid_session
+        put :update, {:id => karyawan.to_param, :karyawan => { "nama_lengkap" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

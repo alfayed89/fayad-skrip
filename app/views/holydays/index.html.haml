@@ -1,0 +1,29 @@
+%h2 Data Pengajuan Cuti Karyawan
+
+%table
+  %tr
+    %th Karyawan
+    %th Emergency address
+    %th From
+    %th To
+    %th Emergency phone
+    %th Keterangan
+    %th Subsitution
+    %th
+    %th
+    %th
+
+  - @holydays.each do |holyday|
+    %tr
+      %td= holyday.karyawan_id
+      %td= holyday.emergency_address
+      %td= holyday.from
+      %td= holyday.to
+      %td= holyday.emergency_phone
+      %td= holyday.keterangan
+      %td= holyday.subsitution_id
+      %td= link_to 'Show', holyday
+      %td= link_to 'Edit', edit_holyday_path(holyday)
+      %td= link_to 'Destroy', holyday, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br

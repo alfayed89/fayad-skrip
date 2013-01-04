@@ -24,7 +24,7 @@ describe GajisController do
   # Gaji. As you add validations to Gaji, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "bonus" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe GajisController do
       it "assigns a newly created but unsaved gaji as @gaji" do
         # Trigger the behavior that occurs when invalid params are submitted
         Gaji.any_instance.stub(:save).and_return(false)
-        post :create, {:gaji => {}}, valid_session
+        post :create, {:gaji => { "bonus" => "invalid value" }}, valid_session
         assigns(:gaji).should be_a_new(Gaji)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Gaji.any_instance.stub(:save).and_return(false)
-        post :create, {:gaji => {}}, valid_session
+        post :create, {:gaji => { "bonus" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe GajisController do
         # specifies that the Gaji created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Gaji.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => gaji.to_param, :gaji => {'these' => 'params'}}, valid_session
+        Gaji.any_instance.should_receive(:update_attributes).with({ "bonus" => "1" })
+        put :update, {:id => gaji.to_param, :gaji => { "bonus" => "1" }}, valid_session
       end
 
       it "assigns the requested gaji as @gaji" do
@@ -132,7 +132,7 @@ describe GajisController do
         gaji = Gaji.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Gaji.any_instance.stub(:save).and_return(false)
-        put :update, {:id => gaji.to_param, :gaji => {}}, valid_session
+        put :update, {:id => gaji.to_param, :gaji => { "bonus" => "invalid value" }}, valid_session
         assigns(:gaji).should eq(gaji)
       end
 
@@ -140,7 +140,7 @@ describe GajisController do
         gaji = Gaji.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Gaji.any_instance.stub(:save).and_return(false)
-        put :update, {:id => gaji.to_param, :gaji => {}}, valid_session
+        put :update, {:id => gaji.to_param, :gaji => { "bonus" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

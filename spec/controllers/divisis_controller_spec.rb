@@ -24,7 +24,7 @@ describe DivisisController do
   # Divisi. As you add validations to Divisi, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { "keterangan" => "MyText" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe DivisisController do
       it "assigns a newly created but unsaved divisi as @divisi" do
         # Trigger the behavior that occurs when invalid params are submitted
         Divisi.any_instance.stub(:save).and_return(false)
-        post :create, {:divisi => {}}, valid_session
+        post :create, {:divisi => { "keterangan" => "invalid value" }}, valid_session
         assigns(:divisi).should be_a_new(Divisi)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Divisi.any_instance.stub(:save).and_return(false)
-        post :create, {:divisi => {}}, valid_session
+        post :create, {:divisi => { "keterangan" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe DivisisController do
         # specifies that the Divisi created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Divisi.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => divisi.to_param, :divisi => {'these' => 'params'}}, valid_session
+        Divisi.any_instance.should_receive(:update_attributes).with({ "keterangan" => "MyText" })
+        put :update, {:id => divisi.to_param, :divisi => { "keterangan" => "MyText" }}, valid_session
       end
 
       it "assigns the requested divisi as @divisi" do
@@ -132,7 +132,7 @@ describe DivisisController do
         divisi = Divisi.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Divisi.any_instance.stub(:save).and_return(false)
-        put :update, {:id => divisi.to_param, :divisi => {}}, valid_session
+        put :update, {:id => divisi.to_param, :divisi => { "keterangan" => "invalid value" }}, valid_session
         assigns(:divisi).should eq(divisi)
       end
 
@@ -140,7 +140,7 @@ describe DivisisController do
         divisi = Divisi.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Divisi.any_instance.stub(:save).and_return(false)
-        put :update, {:id => divisi.to_param, :divisi => {}}, valid_session
+        put :update, {:id => divisi.to_param, :divisi => { "keterangan" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

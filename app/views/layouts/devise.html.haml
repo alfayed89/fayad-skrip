@@ -1,0 +1,25 @@
+!!!
+%html
+	%head
+		%title Fayad
+		%meta{:charset => "utf-8"}
+		%meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+		= stylesheet_link_tag :application, :media => "all"
+		= javascript_include_tag :application
+		= csrf_meta_tags
+	%body
+		.container
+			.row-fluid
+				.span12
+					.head.center-text
+						=image_tag('/assets/logo.jpg')
+						%hr
+			.row-fluid
+				.span8.offset2
+					.body
+						=render 'layouts/messages'
+						=yield
+			.footer
+				%hr
+				%p Copyright @ 2012 PT. Djarum Indonesia .tbk

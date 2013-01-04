@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Nama lengkap:
+  = @karyawan.nama_lengkap
+%p
+  %b Alamat:
+  = @karyawan.alamat
+%p
+  %b Kelamin:
+  = @karyawan.kelamin
+%p
+  %b Npwp:
+  = @karyawan.npwp
+%p
+  %b Tanggal lahir:
+  = @karyawan.tanggal_lahir
+%p
+  %b Tempat lahir:
+  = @karyawan.tempat_lahir
+%p
+  %b Gaji pokok:
+  = @karyawan.gaji_pokok
+%p
+  %b City:
+  = @karyawan.city_id
+%p
+  %b Jabatan:
+  = @karyawan.jabatan_id
+%p
+  %b Email:
+  = @karyawan.email
+
+= link_to 'Edit', edit_karyawan_path(@karyawan)
+\|
+= link_to 'Back', karyawans_path
