@@ -24,9 +24,9 @@
 		=form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
 			.form-horizontal
 				.control-group
-					=f.label :email , :class => "control-label"
+					=f.label :login , :class => "control-label"
 					.controls
-						= f.email_field :email, :class => 'input-xlarge'
+						= f.text_field :login, :class => 'input-xlarge'
 				.control-group
 					=f.label :password , :class => "control-label"
 					.controls

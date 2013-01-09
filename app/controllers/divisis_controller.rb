@@ -1,4 +1,4 @@
-class DivisisController < ApplicationController
+class DivisisController < InternalController
   # GET /divisis
   # GET /divisis.json
   def index

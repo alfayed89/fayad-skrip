@@ -1,4 +1,4 @@
-class AbsensController < ApplicationController
+class AbsensController < InternalController
   # GET /absens
   # GET /absens.json
   def index

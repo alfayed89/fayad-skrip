@@ -1,4 +1,4 @@
-class PengalamenController < ApplicationController
+class PengalamenController < InternalController
   # GET /pengalamen
   # GET /pengalamen.json
   def index

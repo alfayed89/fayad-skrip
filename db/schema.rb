@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104045647) do
+ActiveRecord::Schema.define(:version => 20130109201216) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -102,9 +102,11 @@ ActiveRecord::Schema.define(:version => 20130104045647) do
     t.text     "emergency_address"
     t.string   "emergency_phone"
     t.text     "keterangan"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.boolean  "approved"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "approved",          :default => true
+    t.date     "approved_at"
+    t.integer  "day_duration"
   end
 
   create_table "jabatans", :force => true do |t|
@@ -154,8 +156,9 @@ ActiveRecord::Schema.define(:version => 20130104045647) do
     t.string   "jurusan"
     t.date     "from"
     t.date     "to"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "karyawan_id"
   end
 
   create_table "pengalamen", :force => true do |t|

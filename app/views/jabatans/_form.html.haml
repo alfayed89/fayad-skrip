@@ -5,11 +5,15 @@
 			%ul
 				- @jabatan.errors.full_messages.each do |msg|
 					%li= msg
-
+	.control-group
+		= f.label :nama, :class => 'control-label'
+		.controls
+			= f.text_field :nama
 	.control-group
 		= f.label :divisi_id, :class => 'control-label'
 		.controls
-			= f.number_field :divisi_id
+			-# f.collection_select :kelamin, [['L', 'Laki-laki'], ['P', 'Perempuan']] , :first, :last
+			= f.collection_select(:divisi_id, Divisi.all, :id, :nama)
 	.control-group
 		= f.label :holyday_quota, :class => 'control-label'
 		.controls
@@ -18,9 +22,5 @@
 		= f.label :keterangan, :class => 'control-label'
 		.controls
 			= f.text_field :keterangan
-	.control-group
-		= f.label :nama, :class => 'control-label'
-		.controls
-			= f.text_field :nama
 	.form-actions
 		= f.submit 'Save'

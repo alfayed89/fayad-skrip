@@ -1,6 +1,6 @@
 %h2 Data Pengalaman Karyawan
 
-%table
+%table.table
   %tr
     %th Campany
     %th From
@@ -15,7 +15,7 @@
 
   - @pengalamen.each do |pengalaman|
     %tr
-      %td= pengalaman.campany
+      %td= pengalaman.company
       %td= pengalaman.from
       %td= pengalaman.to
       %td= pengalaman.job_desc

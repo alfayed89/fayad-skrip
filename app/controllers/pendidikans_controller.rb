@@ -1,4 +1,4 @@
-class PendidikansController < ApplicationController
+class PendidikansController < InternalController
   # GET /pendidikans
   # GET /pendidikans.json
   def index

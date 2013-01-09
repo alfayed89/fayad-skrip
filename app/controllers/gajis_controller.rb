@@ -1,4 +1,4 @@
-class GajisController < ApplicationController
+class GajisController < InternalController
   # GET /gajis
   # GET /gajis.json
   def index

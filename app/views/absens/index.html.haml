@@ -1,21 +1,18 @@
 %h2 Data Absen Karyawan
-
-%table
-  %tr
-    %th Karyawan
-    %th Status
-    %th Reason
-    %th
-    %th
-    %th
-
-  - @absens.each do |absen|
-    %tr
-      %td= absen.karyawan_id
-      %td= absen.status
-      %td= absen.reason
-      %td= link_to 'Show', absen
-      %td= link_to 'Edit', edit_absen_path(absen)
-      %td= link_to 'Destroy', absen, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+%hr
+%table.table
+	%thead
+		%tr
+			%th Karyawan
+			%th Status
+			%th.span5 Reason
+			%th Tanggal Kerja
+			%th Action
+	%tbody
+		- for absen in @absens
+			%tr
+				%td=absen.karyawan.nama_lengkap
+				%td=absen.status
+				%td=absen.reason
+				%td=absen.absen_for.strftime('%a, %e %b %Y')
+				%td

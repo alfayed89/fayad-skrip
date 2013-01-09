@@ -1,2 +1,25 @@
-%h1 Dashboard#index
-%p Find me in app/views/dashboard/index.html.haml
+%h1 Dashboard
+%hr
+-unless current_karyawan.have_absen_for_today?
+	.alert.alert-warning.center-text
+		%h3 Anda belum absen untuk hari ini #{Time.now.strftime('%a, %e %b %Y')}
+		=link_to '<i class="icon icon-arrow-up-3"></i> Absen Sekarang'.html_safe, url_for(:action => :absen), :method => :put, :class => 'btn btn-large'
+
+%hr
+.row-fluid
+	.span3
+		%a{:href => url_for(:action => :vacation)}
+			.well.center-text
+				%b Pengajuan Cuti
+	.span3
+		%a{:href => url_for(:action => :pengalaman)}
+			.well.center-text
+				%b Input Pengalaman Kerja
+	.span3
+		%a{:href => url_for(:action => :pendidikan)}
+			.well.center-text
+				%b Input Data Pendidikan
+	.span3
+		%a{:href => url_for(:action => :salary)}
+			.well.center-text
+				%b Rekap Gaji

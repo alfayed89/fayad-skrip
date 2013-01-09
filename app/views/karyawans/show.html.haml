@@ -1,36 +1,90 @@
 %p#notice= notice
-
-%p
-  %b Nama lengkap:
-  = @karyawan.nama_lengkap
-%p
-  %b Alamat:
-  = @karyawan.alamat
-%p
-  %b Kelamin:
-  = @karyawan.kelamin
-%p
-  %b Npwp:
-  = @karyawan.npwp
-%p
-  %b Tanggal lahir:
-  = @karyawan.tanggal_lahir
-%p
-  %b Tempat lahir:
-  = @karyawan.tempat_lahir
-%p
-  %b Gaji pokok:
-  = @karyawan.gaji_pokok
-%p
-  %b City:
-  = @karyawan.city_id
-%p
-  %b Jabatan:
-  = @karyawan.jabatan_id
-%p
-  %b Email:
-  = @karyawan.email
-
-= link_to 'Edit', edit_karyawan_path(@karyawan)
-\|
-= link_to 'Back', karyawans_path
+%h2 Data Karyawan
+%hr
+.row-fluid
+	.span8
+		%h3=@karyawan.nama_lengkap
+		=@karyawan.jabatan.nama
+		%hr
+		%h4 Data Pribadi
+		%table.table.table-striped
+			%tr
+				%td NIK
+				%td=@karyawan.nik
+			%tr
+				%td NPWP
+				%td=@karyawan.npwp
+			%tr
+				%td Tanggal Lahir
+				%td=@karyawan.tanggal_lahir
+			%tr
+				%td Tempat lahir
+				%td=@karyawan.tempat_lahir
+			%tr
+				%td Alamat
+				%td=@karyawan.alamat
+			%tr
+				%td Email
+				%td=@karyawan.email
+	.span4
+		=image_tag('https://secure.gravatar.com/avatar/9601cebd47e3bc0ebb245caca9290b9c?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png', :class => 'img-polaroid')
+%h4 Pengalaman
+-for experience in @karyawan.pengalamen
+	%h5=experience.company
+	%p="#{experience.job_title}, #{experience.from} - #{experience.to}"
+	%hr
+	%p="#{experience.job_desc}"
+%h5 
+%h4 Pendidikan
+%table.table
+	%thead
+		%tr
+			%th Institusi
+			%th Strata
+			%th Jurusan
+			%th Tahun Masuk
+			%th Tahun Lulus
+	%tbody
+		-for pendidikan in @karyawan.pendidikans
+			%tr
+				%td=pendidikan.institusi
+				%td=pendidikan.grade
+				%td=pendidikan.jurusan
+				%td=pendidikan.from
+				%td=pendidikan.to
+	
+-# 
+-# %p
+-#   %b Nama lengkap:
+-#   = @karyawan.nama_lengkap
+-# %p
+-#   %b Alamat:
+-#   = @karyawan.alamat
+-# %p
+-#   %b Kelamin:
+-#   = @karyawan.kelamin
+-# %p
+-#   %b Npwp:
+-#   = @karyawan.npwp
+-# %p
+-#   %b Tanggal lahir:
+-#   = @karyawan.tanggal_lahir
+-# %p
+-#   %b Tempat lahir:
+-#   = @karyawan.tempat_lahir
+-# %p
+-#   %b Gaji pokok:
+-#   = @karyawan.gaji_pokok
+-# %p
+-#   %b City:
+-#   = @karyawan.city_id
+-# %p
+-#   %b Jabatan:
+-#   = @karyawan.jabatan_id
+-# %p
+-#   %b Email:
+-#   = @karyawan.email
+-# 
+-# = link_to 'Edit', edit_karyawan_path(@karyawan)
+-# \|
+-# = link_to 'Back', karyawans_path

@@ -13,6 +13,31 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "iconmoon";
+input, textarea{
+	&.error {
+		border-color:red;
+	}
+}
+.fields_with_errors {
+	.fields {
+		select, checkbox {
+			border-color:red;
+		}
+	}
+}
+.input-error-desc{
+	color:red;
+}
+.form-cuti{
+	.control-group.date{
+		.controls select{
+			width: auto;
+			padding-right:2px;
+			padding-left:2px;
+		}
+	}
+}
+
 [class^="icon-"], [class*=" icon-"] {
 font-family: 'IcoMoon';
 font-style: normal;

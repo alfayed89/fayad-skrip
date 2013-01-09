@@ -1,4 +1,4 @@
-class HolydaysController < ApplicationController
+class HolydaysController < InternalController
   # GET /holydays
   # GET /holydays.json
   def index

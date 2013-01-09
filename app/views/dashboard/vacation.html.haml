@@ -1,0 +1,78 @@
+.row-fluid
+	.span9
+		%h2 Pengajuan Juti
+	.span3
+		%span 
+			Quota Cuti tahun 
+			%b #{Time.now.strftime('%Y')}
+		%br
+		%span
+			-taken = current_karyawan.holydays_taken_in_year
+			Disetujui :
+			%b=taken
+			Sisa :
+			%b=current_karyawan.jabatan.holyday_quota - taken
+%hr
+
+%table.table.table-bordered
+	%thead
+		%tr
+			%th #
+			%th Mulai Tanggal
+			%th Sampai Tanggal
+			%th Keterangan
+			%th Approved
+			%th Action
+
+	%tbody
+		-@holydays.each do |holyday|
+			%tr
+				%td #
+				%td Mulai Tanggal
+				%td Sampai Tanggal
+				%td Keterangan
+				%td approved
+				%td 
+					=link_to "Lihat"
+					|
+					=link_to "Edit"
+.form-cuti
+	.well
+		%h4 Form Pengajuan Cuti
+		%hr
+		= form_for(@holyday, :url => url_for(:action => :create_vacation)) do |f|
+			.form-inline
+				.row-fluid
+					.span6
+						.control-group.date
+							=f.label :from, "Mulai Tanggal" , :class => "control-label"
+							.controls
+								=f.date_select :from, :start_year => Time.now.year, :end_year => (Time.now.year+1)				
+					.span6
+						.control-group.date
+							=f.label :to, "Sampai Tanggal" , :class => "control-label"
+							.controls
+								- fields_with_errors @holyday , :to do
+									=f.date_select :to, :start_year => Time.now.year, :end_year => (Time.now.year+1)
+				.row-fluid
+					.span6
+						.control-group
+							=f.label :emergency_address, :class => "control-label"
+							.controls
+								=f.text_field :emergency_address, :class => "span12"
+					.span6
+						.control-group
+							=f.label :emergency_phone,  :class => "control-label"
+							.controls
+								=f.text_field :emergency_phone,  :class => "span12"
+							
+				.row-fluid
+					.span6
+						.control-group
+							=f.label :subsitution_id, :class => "control-label"
+							.controls
+								%input.span12{:type => :text, :name => "holdersubs"}
+								=f.hidden_field :subsitution_id
+					.span6
+						.right-text
+							%button.btn.btn-large Ajukan
