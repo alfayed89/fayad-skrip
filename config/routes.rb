@@ -5,7 +5,7 @@ Fayad::Application.routes.draw do
   get "dashboard/vacation" => "dashboard#vacation"
   get "dashboard/education" => "dashboard#pendidikan"
   get "dashboard/experience" => "dashboard#pengalaman"
-  get "dashboard/salary" => "dashboard#salary"
+  get "dashboard/salary(/:state/:id)" => "dashboard#salary"
   post "dashboard/vacation" => "dashboard#create_vacation"
   post "dashboard/education" => "dashboard#create_pendidikan"
   post "dashboard/experience" => "dashboard#create_pengalaman"

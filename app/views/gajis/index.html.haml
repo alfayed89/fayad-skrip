@@ -14,10 +14,10 @@
 
   - @gajis.each do |gaji|
     %tr
-      %td= gaji.karyawan.name
-      %td= gaji.bonus
-      %td= gaji.jamsostek
-      %td= gaji.pajak
+      %td= link_to(gaji.karyawan.name, gaji.karyawan)
+      %td= money_formater(gaji.bonus)
+      %td= money_formater(gaji.jamsostek)
+      %td= money_formater(gaji.pajak)
 
       %td= gaji.other_desc
       %td= gaji.other_value

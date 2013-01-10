@@ -8,6 +8,6 @@ class Gaji < ActiveRecord::Base
     errors.add(:karyawan_id, "gaji bulan #{Time.now.strftime('%B')} untuk #{karyawan.name} telah terdata") unless Gaji.where(:karyawan_id => self.karyawan_id, :created_at => (Time.now.beginning_of_month..Time.now.end_of_month)).last.nil? 
   end
   def assign_final_amount
-    
+    write_attribute(:final_amount, (karyawan.gaji_pokok + bonus) - (jamsostek + pajak))
   end
 end

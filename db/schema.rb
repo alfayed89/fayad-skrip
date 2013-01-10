@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110104053) do
+ActiveRecord::Schema.define(:version => 20130110111531) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -84,14 +84,14 @@ ActiveRecord::Schema.define(:version => 20130110104053) do
 
   create_table "gajis", :force => true do |t|
     t.integer  "karyawan_id"
-    t.integer  "bonus"
-    t.integer  "pajak"
-    t.integer  "jamsostek"
+    t.integer  "bonus",        :default => 0
+    t.integer  "pajak",        :default => 0
+    t.integer  "jamsostek",    :default => 0
     t.string   "other_value"
     t.string   "other_desc"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "final_amount"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "final_amount", :default => 0
   end
 
   create_table "holydays", :force => true do |t|

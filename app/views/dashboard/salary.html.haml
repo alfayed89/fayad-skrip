@@ -1,0 +1,20 @@
+%h2 Rekap Gaji
+%hr
+%table.table.table-striped
+	%thead
+		%tr
+			%th Bulan Tahun
+			%th Tanggal Release
+			%th Bonus
+			%th Jamsostek
+			%th Pajak
+			%th Diterima
+	%tbody
+		- for gaji in @gajis
+			%tr
+				%td=gaji.created_at.strftime('%B %Y')
+				%td=gaji.created_at.strftime('%A, %e')
+				%td=money_formater(gaji.bonus)
+				%td=money_formater(gaji.jamsostek)
+				%td=money_formater(gaji.pajak)
+				%td=money_formater(gaji.final_amount)

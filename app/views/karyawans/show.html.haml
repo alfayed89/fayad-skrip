@@ -38,7 +38,7 @@
 	-for experience in @karyawan.pengalamen
 		.pengalaman-item
 			%h4.company=experience.company
-			%p.line_overview="#{experience.job_title}, #{experience.from} - #{experience.to}"
+			%p.line_overview="#{experience.job_title}, #{experience.from.strftime('%B %Y')} - #{experience.to.strftime('%B %Y')}"
 			%small Job Description
 			%p.job_desc="#{experience.job_desc}"
 			.reason.alert.alert-info
@@ -67,38 +67,3 @@
 				%td=pendidikan.from
 				%td=pendidikan.to
 	
--# 
--# %p
--#   %b Nama lengkap:
--#   = @karyawan.nama_lengkap
--# %p
--#   %b Alamat:
--#   = @karyawan.alamat
--# %p
--#   %b Kelamin:
--#   = @karyawan.kelamin
--# %p
--#   %b Npwp:
--#   = @karyawan.npwp
--# %p
--#   %b Tanggal lahir:
--#   = @karyawan.tanggal_lahir
--# %p
--#   %b Tempat lahir:
--#   = @karyawan.tempat_lahir
--# %p
--#   %b Gaji pokok:
--#   = @karyawan.gaji_pokok
--# %p
--#   %b City:
--#   = @karyawan.city_id
--# %p
--#   %b Jabatan:
--#   = @karyawan.jabatan_id
--# %p
--#   %b Email:
--#   = @karyawan.email
--# 
--# = link_to 'Edit', edit_karyawan_path(@karyawan)
--# \|
--# = link_to 'Back', karyawans_path

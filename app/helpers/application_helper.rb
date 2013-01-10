@@ -8,4 +8,7 @@ module ApplicationHelper
       end
     end
   end
+  def money_formater amount
+    number_to_currency(amount, :unit => "IDR", :format => '%u %n', :precision => 0 , :divisions => '.', :delimiter => '.')
+  end
 end

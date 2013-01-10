@@ -46,7 +46,7 @@
 	-for experience in @pengalamen
 		.pengalaman-item
 			%h4.company=experience.company
-			%p.line_overview="#{experience.job_title}, #{experience.from} - #{experience.to}"
+			%p.line_overview="#{experience.job_title}, #{experience.from.strftime('%B %Y')} - #{experience.to.strftime('%B %Y')}"
 			%small Job Description
 			%p.job_desc="#{experience.job_desc}"
 			.reason.alert.alert-info
