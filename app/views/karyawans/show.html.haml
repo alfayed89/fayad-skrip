@@ -6,7 +6,9 @@
 		%h3=@karyawan.nama_lengkap
 		=@karyawan.jabatan.nama
 		%hr
-		%h4 Data Pribadi
+		%h4
+			%i.icon.icon-user-3
+			Data Pribadi
 		%table.table.table-striped
 			%tr
 				%td NIK
@@ -28,14 +30,26 @@
 				%td=@karyawan.email
 	.span4
 		=image_tag('https://secure.gravatar.com/avatar/9601cebd47e3bc0ebb245caca9290b9c?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png', :class => 'img-polaroid')
-%h4 Pengalaman
--for experience in @karyawan.pengalamen
-	%h5=experience.company
-	%p="#{experience.job_title}, #{experience.from} - #{experience.to}"
-	%hr
-	%p="#{experience.job_desc}"
-%h5 
-%h4 Pendidikan
+%h4 
+	%i.icon.icon-list-2
+	Pengalaman
+%hr
+.pengalaman-list			
+	-for experience in @karyawan.pengalamen
+		.pengalaman-item
+			%h4.company=experience.company
+			%p.line_overview="#{experience.job_title}, #{experience.from} - #{experience.to}"
+			%small Job Description
+			%p.job_desc="#{experience.job_desc}"
+			.reason.alert.alert-info
+				%small Alasan Berhenti:
+				%p.reason="#{experience.reason}"
+
+%br
+%h4
+	%i.icon.icon-pencil-2
+	Pendidikan
+	%hr.empty-top
 %table.table
 	%thead
 		%tr

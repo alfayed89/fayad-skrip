@@ -28,10 +28,14 @@
 		-@holydays.each do |holyday|
 			%tr
 				%td #
-				%td Mulai Tanggal
-				%td Sampai Tanggal
-				%td Keterangan
-				%td approved
+				%td=holyday.from
+				%td=holyday.to
+				%td=holyday.keterangan
+				%td
+					-if holyday.approved?
+						%span.badge.badge-success Disetujui
+					-else
+						%span.badge.badge-danger Belom / Ditolak
 				%td 
 					=link_to "Lihat"
 					|
@@ -71,8 +75,47 @@
 						.control-group
 							=f.label :subsitution_id, :class => "control-label"
 							.controls
-								%input.span12{:type => :text, :name => "holdersubs"}
+								%input.span12#holdersubs{:type => :text, :name => "holdersubs"}
 								=f.hidden_field :subsitution_id
 					.span6
 						.right-text
 							%button.btn.btn-large Ajukan
+=content_for(:bottom_js) do
+	:javascript
+		$(document).ready(function(){
+			$('#holdersubs').autocomplete({
+				source: function(request, response){
+					$.ajax({
+						url : "#{search_karyawans_path}",
+						dataType : 'json',
+						data : {
+							q : function(){
+								return $('#holdersubs').attr('value')
+							}
+						},
+						success : function(data){
+							response( $.map( data, function( item ) {
+										return {
+											label: item.nama_lengkap,
+											value: item.id
+										}
+									}
+								)
+							);
+						}
+					})
+				},
+				minLength: 2,
+				focus: function( event, ui ) {
+					$('#holdersubs').val( ui.item.label )
+					return false;
+				},
+				select: function( event, ui ) {
+					$('#holdersubs').val( ui.item.label )
+					$('#holyday_subsitution_id').val( ui.item.value)
+					return false
+				},
+				
+			})
+			
+		})

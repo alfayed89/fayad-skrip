@@ -13,14 +13,22 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "iconmoon";
-.form-pendidikan{
+.form-pendidikan, .form-pengalaman{
 	.date {
 		select {
 			width :auto;
 		}
 	}
 }
-
+.pengalaman-list{
+	.pengalaman-item {
+		border-bottom: 1px solid #ccc;
+		p.line_overview {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 5px;
+		}
+	}
+}
 input, textarea{
 	&.error {
 		border-color:red;
@@ -55,6 +63,7 @@ background-image: none;
 background-position: inherit;
 display: inline;
 margin-top:0px;
+vertical-align:middle
 }
 .right-text {
 	text-align:right;

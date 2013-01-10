@@ -9,11 +9,11 @@
 						=f.label :institusi
 						=f.text_field :institusi, :class => 'span12'
 					.span4
-						=f.label :institusi
-						=f.text_field :institusi, :class => 'span12'
+						=f.label :grade
+						=f.text_field :grade, :class => 'span12'
 					.span4
-						=f.label :institusi
-						=f.text_field :institusi, :class => 'span12'
+						=f.label :jurusan
+						=f.text_field :jurusan, :class => 'span12'
 				%br
 				.row-fluid
 					.span8
@@ -46,9 +46,9 @@
 	%tbody
 		- for pendidikan in @pendidikans
 			%tr
-				%td Instituse
-				%td Grade
-				%td Jurusan
-				%td Tahun Masuk
-				%td Tahun Lulus
+				%td=pendidikan.institusi
+				%td=pendidikan.grade
+				%td=pendidikan.jurusan
+				%td=pendidikan.from.strftime('%B %Y')
+				%td=pendidikan.to.strftime('%B %Y')
 			

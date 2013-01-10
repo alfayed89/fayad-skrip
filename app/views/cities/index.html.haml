@@ -1,6 +1,6 @@
-%h1 Listing cities
+%h2 Listing cities
 
-%table
+%table.table
   %tr
     %th Nama
     %th Province
@@ -16,6 +16,6 @@
       %td= link_to 'Edit', edit_city_path(city)
       %td= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+%hr
 
-= link_to 'New City', new_city_path
+= link_to '<i class="icon icon-plus"></i> New City'.html_safe, new_city_path, :class => "btn btn-primary"

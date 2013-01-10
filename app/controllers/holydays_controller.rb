@@ -69,6 +69,17 @@ class HolydaysController < InternalController
     end
   end
 
+  def approve
+    @holyday = Holyday.find(params[:id])
+    @holyday.approved = params[:disapprove].nil? 
+    @holyday.approved_at = params[:disapprove].nil? ? Time.now.to_date : nil
+    if @holyday.save
+      flash[:success] = params[:disapprove].nil? ? "Pengajuan Cuti Berhasil Di Setujui" : "Pengajuan Cuti Ditolak"
+    else
+      flash[:error] = @holyday.errors.to_a.join(", ")
+    end
+    redirect_to :action => :index
+  end
   # DELETE /holydays/1
   # DELETE /holydays/1.json
   def destroy

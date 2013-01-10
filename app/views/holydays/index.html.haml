@@ -1,29 +1,41 @@
 %h2 Data Pengajuan Cuti Karyawan
+%hr
+%table.table
+	%thead
+		%tr
+			%th Karyawan
+			%th Lama Cuti
+			%th Emergency phone
+			%th Approved
+			%th Keterangan
+			%th Subsitution
+			%th Action
+	%tbody
+		- @holydays.each do |holyday|		
+			%tr
+				%td= link_to(holyday.karyawan.nama_lengkap, holyday.karyawan)
+				%td= "#{holyday.day_duration} hari" 
+				%td= holyday.emergency_phone
+				%td
+					-if current_ability.can?(:approve, Holyday)
+						- if holyday.approved?
+						=link_to('Disapprove', approve_holyday_path(holyday, :disapprove => true), :method => :put, :class => 'btn btn-danger btn-small')
+						- else
+							=link_to('Approve', approve_holyday_path(holyday), :method => :put, :class => 'btn btn-primary btn-small')
+					-else
+						- if holyday.approved?
+							%span.badge.badge-warning Belum Disetujui / Ditolak
+						- else
+							%span.badge.badge-success Sudah Disetujui
+						
+				%td= holyday.keterangan
+				%td
+					- unless holyday.subsitution_id.nil?
+						= link_to(holyday.subsitution.nama_lengkap, holyday.subsitution)
+					- else
+						="-"
+				%td
+					=link_to 'Show', holyday
+					=link_to 'Edit', edit_holyday_path(holyday)
+					=link_to 'Destroy', holyday, method: :delete, data: { confirm: 'Are you sure?' }
 
-%table
-  %tr
-    %th Karyawan
-    %th Emergency address
-    %th From
-    %th To
-    %th Emergency phone
-    %th Keterangan
-    %th Subsitution
-    %th
-    %th
-    %th
-
-  - @holydays.each do |holyday|
-    %tr
-      %td= holyday.karyawan_id
-      %td= holyday.emergency_address
-      %td= holyday.from
-      %td= holyday.to
-      %td= holyday.emergency_phone
-      %td= holyday.keterangan
-      %td= holyday.subsitution_id
-      %td= link_to 'Show', holyday
-      %td= link_to 'Edit', edit_holyday_path(holyday)
-      %td= link_to 'Destroy', holyday, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br

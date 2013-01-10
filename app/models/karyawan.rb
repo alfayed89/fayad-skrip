@@ -18,6 +18,7 @@ class Karyawan < ActiveRecord::Base
   has_many :pengalamen
   has_many :holydays  
   belongs_to :city
+  has_many :gajis
   has_one :admin_user
   
   attr_accessible :login

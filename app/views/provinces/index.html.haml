@@ -1,4 +1,4 @@
-%h1 Listing provinces
+%h2 Listing provinces
 
 %table
   %tr
@@ -14,6 +14,5 @@
       %td= link_to 'Edit', edit_province_path(province)
       %td= link_to 'Destroy', province, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Province', new_province_path
+%hr
+= link_to '<i class="icon icon-plus"></i> New Province'.html_safe, new_province_path, :class => "btn btn-primary"

@@ -1,6 +1,54 @@
+
 %h2 Pengalaman Kerja
--for experience in @pengalamen
-	%h5=experience.company
-	%p="#{experience.job_title}, #{experience.from} - #{experience.to}"
-	%hr
-	%p="#{experience.job_desc}"
+%hr
+.form-pengalaman
+	.well
+		%b Form input Pengalaman Kerja
+		%hr
+		=form_for(@pengalaman, :url => url_for(:action => :create_pengalaman)) do |f|
+			.row-fluid
+				.span8
+					.row-fluid
+						.span6
+							=f.label :company
+							=f.text_field :company, :class => "span12"
+						.span6
+							=f.label :job_title
+							=f.text_field :job_title, :class => "span12"
+					.form-horizontal
+						.control-group
+							=f.label :job_desc, :class => "control-label"
+							.controls
+								=f.text_area :job_desc, :class => "span12", :rows => "4"
+						.control-group
+							=f.label :reason, "Alasan Berhenti", :class => "control-label"
+							.controls
+								=f.text_area :reason, :class => "span12", :rows => "4"
+						
+				.span4
+					.date
+						=f.label :from
+						- fields_with_errors @pengalaman, :from do
+							=f.date_select :from, :prompt => {:day => 'Tgl', :month => 'Bulan', :year => 'tahun'}
+					.date
+						=f.label :to
+						- fields_with_errors @pengalaman, :to do
+							=f.date_select :to, :prompt => {:day => 'Tgl', :month => 'Bulan', :year => 'tahun'}
+					%hr
+					.block
+						%br
+						%br
+						%button.btn.span12.btn-primary
+							%i.icon.icon-plus
+							Tambah Data Riwayat Kerja
+			
+.pengalaman-list			
+	-for experience in @pengalamen
+		.pengalaman-item
+			%h4.company=experience.company
+			%p.line_overview="#{experience.job_title}, #{experience.from} - #{experience.to}"
+			%small Job Description
+			%p.job_desc="#{experience.job_desc}"
+			.reason.alert.alert-info
+				%small Alasan Berhenti:
+				%p.reason="#{experience.reason}"

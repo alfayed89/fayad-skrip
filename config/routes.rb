@@ -11,9 +11,17 @@ Fayad::Application.routes.draw do
   post "dashboard/experience" => "dashboard#create_pengalaman"
 
   devise_for :karyawans, :path => :user
-  resources :karyawans
+  resources :karyawans do
+    collection do
+      get "search" , :action => :search_ajax
+    end
+  end
   resources :absens,    :except => [:create, :new]
-  resources :holydays,  :except => [:create, :new]
+  resources :holydays,  :except => [:create, :new] do 
+    member do
+      put "approve" , :action => :approve, :format => :json
+    end
+  end
   resources :jabatans
   resources :pendidikans
   resources :pengalamen

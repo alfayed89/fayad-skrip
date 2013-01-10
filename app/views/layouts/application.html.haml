@@ -7,13 +7,17 @@
 		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
 		= stylesheet_link_tag :application, :media => "all"
 		= javascript_include_tag :application
+		= javascript_include_tag '/static.asset/jquery-ui/js/jquery-ui-1.9.2.custom'
+		= stylesheet_link_tag '/static.asset/jquery-ui/css/cupertino/jquery-ui-1.9.2.custom.min'
 		= csrf_meta_tags
 	%body
 		.container
 			.head
 				.row-fluid
-					.span2
+					.span1
 						=image_tag('/assets/logo.jpg')
+					.span11
+						%h3 PT. Artha Guna
 				%hr
 			.row-fluid
 				-if current_karyawan
@@ -24,6 +28,8 @@
 					.body
 						=render 'layouts/messages'
 						=yield
+			
 			.footer
 				%hr
 				%p Copyright @ 2012 PT. Djarum Indonesia .tbk
+		=yield :bottom_js

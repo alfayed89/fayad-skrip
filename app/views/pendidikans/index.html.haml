@@ -1,25 +1,25 @@
 %h2 Data Pendidikan Karyawan
 
-%table
+%table.table
   %tr
+    %th Karyawan
+    %th Institusi
+    %th Grade
+    %th Jurusan
     %th From
     %th To
-    %th Karyawan
-    %th Grade
-    %th Institusi
-    %th Jurusan
     %th
     %th
     %th
 
   - @pendidikans.each do |pendidikan|
     %tr
+      %td= link_to(pendidikan.karyawan.nama_lengkap, pendidikan.karyawan)
+      %td= pendidikan.institusi
+      %td= pendidikan.grade
+      %td= pendidikan.jurusan
       %td= pendidikan.from
       %td= pendidikan.to
-      %td= pendidikan.karyawan_id
-      %td= pendidikan.grade
-      %td= pendidikan.institusi
-      %td= pendidikan.jurusan
       %td= link_to 'Show', pendidikan
       %td= link_to 'Edit', edit_pendidikan_path(pendidikan)
       %td= link_to 'Destroy', pendidikan, method: :delete, data: { confirm: 'Are you sure?' }

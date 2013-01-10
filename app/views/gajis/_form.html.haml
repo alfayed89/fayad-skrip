@@ -8,7 +8,8 @@
 	.control-group
 		= f.label :karyawan_id, :class => 'control-label'
 		.controls
-			= f.number_field :karyawan_id
+			%input#holderkaryawan{:type => :text , :name => 'holderkaryawan', :value => @gaji.karyawan.nil? ? "" : @gaji.karyawan.name}
+			= f.hidden_field :karyawan_id
 	.control-group
 		= f.label :bonus, :class => 'control-label'
 		.controls
@@ -34,3 +35,42 @@
 			= f.number_field :other_value
 	.form-actions
 		= f.submit 'Save', :class => 'btn btn-large btn-primary'
+=content_for(:bottom_js) do
+	:javascript
+		$(document).ready(function(){
+			$('#holderkaryawan').autocomplete({
+				source: function(request, response){
+					$.ajax({
+						url : "#{search_karyawans_path}",
+						dataType : 'json',
+						data : {
+							q : function(){
+								return $('#holderkaryawan').attr('value')
+							}
+						},
+						success : function(data){
+							response( $.map( data, function( item ) {
+										return {
+											label: item.nama_lengkap,
+											value: item.id
+										}
+									}
+								)
+							);
+						}
+					})
+				},
+				minLength: 2,
+				focus: function( event, ui ) {
+					$('#holderkaryawan').val( ui.item.label )
+					return false;
+				},
+				select: function( event, ui ) {
+					$('#holderkaryawan').val( ui.item.label )
+					$('#gaji_karyawan_id').val( ui.item.value)
+					return false
+				},
+				
+			})
+			
+		})
