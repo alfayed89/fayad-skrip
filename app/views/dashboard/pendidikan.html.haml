@@ -1,0 +1,54 @@
+%h1 Pendidikan
+%hr
+.form-pendidikan
+	.well
+		=form_for(@pendidikan, :url => url_for(:action => :create_pendidikan)) do |f|
+			.form-inline
+				.row-fluid
+					.span4
+						=f.label :institusi
+						=f.text_field :institusi, :class => 'span12'
+					.span4
+						=f.label :institusi
+						=f.text_field :institusi, :class => 'span12'
+					.span4
+						=f.label :institusi
+						=f.text_field :institusi, :class => 'span12'
+				%br
+				.row-fluid
+					.span8
+						.row-fluid
+							.span6
+								.date
+									=f.label :from
+									%br
+									- fields_with_errors @pendidikan , :from do
+										=f.date_select :from, :prompt => {:day => 'Tgl', :month => 'Bulan', :year => 'Tahun'}
+							.span6
+								.date
+									=f.label :to
+									%br
+									- fields_with_errors @pendidikan , :to do
+										=f.date_select :to, :prompt => {:day => 'Tgl', :month => 'Bulan', :year => 'Tahun'}
+					.span4
+						%button.btn.btn-primary.span12.btn-large
+							%i.icon.icon-plus
+							Tambah Pendidikan
+%table.table
+
+	%thead
+		%tr
+			%th Institusi
+			%th Strata
+			%th Jurusan
+			%th Tahun Masuk
+			%th Tahun Lulu
+	%tbody
+		- for pendidikan in @pendidikans
+			%tr
+				%td Instituse
+				%td Grade
+				%td Jurusan
+				%td Tahun Masuk
+				%td Tahun Lulus
+			

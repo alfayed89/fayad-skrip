@@ -13,6 +13,14 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "iconmoon";
+.form-pendidikan{
+	.date {
+		select {
+			width :auto;
+		}
+	}
+}
+
 input, textarea{
 	&.error {
 		border-color:red;

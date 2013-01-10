@@ -4,8 +4,15 @@ class DashboardController < InternalController
   before_filter(:only => [:vacation, :create_vacation]) do
     @holydays = current_karyawan.holydays
   end
+  before_filter(:only => [:pendidikan, :create_pendidikan]) do
+    @pendidikans = current_karyawan.pendidikans
+  end
+  before_filter(:only => [:pengalaman, :create_pengalaman]) do
+    @pengalamen = current_karyawan.pengalamen
+  end
   def index
   end
+  
   def absen
     a = Absen.new(:status => 'MASUK', :absen_for => Time.now.to_date)
     a.karyawan = current_karyawan
@@ -33,26 +40,36 @@ class DashboardController < InternalController
   end
   
   def pendidikan
-    @pendidikan = Pendidikan.new(:karyawan_id => current_karyawan.id)    
+    @pendidikan = Pendidikan.new()    
   end
   def create_pendidikan
-    @pendidikan = Pendidkan.new(params[:pendidikan])
+    @pendidikan = Pendidikan.new(params[:pendidikan])
     @pendidikan.karyawan = current_karyawan
     if @pendidikan.save
-      redirect_to :action => :index , :notice => 'Berhasil menambah riwayat pendidikan'
+      flash[:success] = 'Berhasil menambah riwayat pendidikan'
+      redirect_to :action => :pendidikan 
     else
       render :action => :pendidikan
     end
   end
   
   
-  def pengalaman  
+  def pengalaman 
+    @pengalaman = Pengalaman.new() 
   end
   
   def create_pengalaman
+    @pengalaman = Pengalaman.new(params[:pengalaman].merge(:karyawan_id => current_karyawan.id))
+    if @pengalaman.save
+      flash[:success] = 'Berhasil menambah riwayat pendidikan'
+      redirect_to :action => :pengalaman
+    else
+      render :action => :pengalaman
+    end
   end
   
   
   def salary
+    @gajis = current_karyawan.gajis
   end
 end
