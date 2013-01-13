@@ -2,7 +2,7 @@ class DivisisController < InternalController
   # GET /divisis
   # GET /divisis.json
   def index
-    @divisis = Divisi.all
+    @divisis = Divisi.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,0 +1,14 @@
+- if current_karyawan and current_karyawan.is_masuk_for_today?
+	.time-tracker
+		%h5 Time Tracker
+		.row-fluid
+			.span6
+				%p
+					%i.icon.icon-clock
+					/ =ChronicDuration.output current_karyawan.absen_for_today.time_earn
+					=current_karyawan.absen_for_today.time_earn
+			.span6
+				-unless current_karyawan.have_workoff_for_today?
+					=link_to "Work Off", dashboard_absen_path(:workoff => true), :method => :put, :class => "btn btn-info"
+				-else
+					=link_to "Work Off", "#", :class => "btn btn-inverse disabled"

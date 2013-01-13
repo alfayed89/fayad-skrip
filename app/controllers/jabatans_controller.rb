@@ -2,7 +2,7 @@ class JabatansController < InternalController
   # GET /jabatans
   # GET /jabatans.json
   def index
-    @jabatans = Jabatan.all
+    @jabatans = Jabatan.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

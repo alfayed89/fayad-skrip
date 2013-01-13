@@ -16,6 +16,7 @@
       %td= link_to 'Edit', edit_divisi_path(divisi)
       %td= link_to 'Destroy', divisi, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
 
+=will_paginate @divisis
+%hr
 = link_to 'New Divisi', new_divisi_path

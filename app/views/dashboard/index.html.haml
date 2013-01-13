@@ -1,9 +1,12 @@
 %h1 Dashboard
 %hr
--unless current_karyawan.have_absen_for_today?
+-if current_karyawan.absen_for_today.nil?
 	.alert.alert-warning.center-text
 		%h3 Anda belum absen untuk hari ini #{Time.now.strftime('%a, %e %b %Y')}
-		=link_to '<i class="icon icon-arrow-up-3"></i> Absen Sekarang'.html_safe, url_for(:action => :absen), :method => :put, :class => 'btn btn-large'
+		silakan pilih salah satu :
+		=link_to 'Masuk', url_for(:action => :absen, :status => "MASUK"), :method => :put, :class => 'btn btn-success'
+		=link_to 'Izin', url_for(:action => :absen, :status => "IZIN"), :method => :put, :class => 'btn btn-info'
+		=link_to 'Sakit', url_for(:action => :absen, :status => "SAKIT"), :method => :put, :class => 'btn btn-warning'
 
 %hr
 .row-fluid

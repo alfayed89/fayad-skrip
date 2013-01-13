@@ -2,7 +2,7 @@ class AbsensController < InternalController
   # GET /absens
   # GET /absens.json
   def index
-    @absens = Absen.all
+    @absens = Absen.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

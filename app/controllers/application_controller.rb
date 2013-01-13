@@ -10,6 +10,7 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, object|
   end
   html_tag
 end
+WillPaginate.per_page = 10
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   def current_user

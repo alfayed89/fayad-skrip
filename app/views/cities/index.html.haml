@@ -11,11 +11,11 @@
   - @cities.each do |city|
     %tr
       %td= city.nama
-      %td= city.province_id
+      %td= city.province.nama
       %td= link_to 'Show', city
       %td= link_to 'Edit', edit_city_path(city)
       %td= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
 
+=will_paginate @cities
 %hr
-
 = link_to '<i class="icon icon-plus"></i> New City'.html_safe, new_city_path, :class => "btn btn-primary"

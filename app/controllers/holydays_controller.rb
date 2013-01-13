@@ -2,7 +2,7 @@ class HolydaysController < InternalController
   # GET /holydays
   # GET /holydays.json
   def index
-    @holydays = Holyday.all
+    @holydays = Holyday.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

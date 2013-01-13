@@ -14,14 +14,29 @@ class DashboardController < InternalController
   end
   
   def absen
-    a = Absen.new(:status => 'MASUK', :absen_for => Time.now.to_date)
-    a.karyawan = current_karyawan
-    if a.save
-      flash[:success] = "Absen Berhasil"
+    if params[:workoff].nil?
+      a = Absen.new(:status => params[:status], :absen_for => Time.now.to_date)
+      a.karyawan = current_karyawan
+      if a.save
+        flash[:success] = "Absen Berhasil"
+      else
+        flash[:error] =  a.errors.to_a.join("<br/>")
+      end
+      redirect_to url_for(:action => :index)
     else
-      flash[:error] =  a.errors.to_a.join("<br/>")
+      a = current_karyawan.absen_for_today
+      if a.nil?
+        flash[:error] = 'anda belum absen untuk hari ini'
+      elsif a.status != "MASUK"
+        flash[:error] = "anda <b>#{a.status.downcase}</b> untuk hari ini"
+      elsif a.offduty.nil? == false
+        flash[:alert] = "anda sudah menghari waktu kerja pada pukul #{a.offduty.strftime('%I:%M %p')}"
+      else
+        flash[:success] = "anda telah mengakhiri waktu kerja pada hari ini, selamat pulang, hati-hati dijalan. :)"
+        a.work_off
+      end
+      redirect_to url_for(:action => :index)
     end
-    redirect_to url_for(:action => :index)
   end
   
   def vacation

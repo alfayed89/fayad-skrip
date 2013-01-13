@@ -7,12 +7,16 @@
 			%th Status
 			%th.span5 Reason
 			%th Tanggal Kerja
-			%th Action
+			%th Masuk
+			%th Pulang
 	%tbody
 		- for absen in @absens
 			%tr
-				%td=absen.karyawan.nama_lengkap
+				%td=link_to absen.karyawan.nama_lengkap, karyawan_path(absen.karyawan)
 				%td=absen.status
 				%td=absen.reason
 				%td=absen.absen_for.strftime('%a, %e %b %Y')
-				%td
+				%td=absen.onduty.strftime('%I:%M %p')
+				%th="#{(absen.real_time_earn.nil? ? '-' : absen.offduty.strftime('%I:%M %p') )}"
+- if @absens.size > 0
+	=will_paginate @posts 

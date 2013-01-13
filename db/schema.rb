@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110111531) do
+ActiveRecord::Schema.define(:version => 20130113135133) do
 
   create_table "absens", :force => true do |t|
     t.integer  "karyawan_id"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20130110111531) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.date     "absen_for"
+    t.datetime "onduty"
+    t.datetime "offduty"
+    t.float    "time_earn"
   end
 
   create_table "active_admin_comments", :force => true do |t|
@@ -69,17 +72,17 @@ ActiveRecord::Schema.define(:version => 20130110111531) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string   "nama"
-    t.integer  "province_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string    "nama"
+    t.integer   "province_id"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
   end
 
   create_table "divisis", :force => true do |t|
-    t.string   "nama"
-    t.text     "keterangan"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "nama"
+    t.text      "keterangan"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "gajis", :force => true do |t|
@@ -102,20 +105,20 @@ ActiveRecord::Schema.define(:version => 20130110111531) do
     t.text     "emergency_address"
     t.string   "emergency_phone"
     t.text     "keterangan"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "approved",          :default => true
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "approved",          :default => false
     t.date     "approved_at"
     t.integer  "day_duration"
   end
 
   create_table "jabatans", :force => true do |t|
-    t.string   "nama"
-    t.integer  "divisi_id"
-    t.integer  "holyday_quota"
-    t.text     "keterangan"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string    "nama"
+    t.integer   "divisi_id"
+    t.integer   "holyday_quota"
+    t.text      "keterangan"
+    t.timestamp "created_at",    :null => false
+    t.timestamp "updated_at",    :null => false
   end
 
   create_table "karyawans", :force => true do |t|
@@ -174,9 +177,9 @@ ActiveRecord::Schema.define(:version => 20130110111531) do
   end
 
   create_table "provinces", :force => true do |t|
-    t.string   "nama"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "nama"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

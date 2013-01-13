@@ -3,11 +3,11 @@ class KaryawansController < InternalController
   # GET /karyawans.json
   def search_ajax
     @karyawans = Karyawan.where('id > ?', 0)
-    @karyawans = @karyawans.where('nama_lengkap like :query or nik like :query', :query => "%#{params[:q]}%") unless params[:q].nil?
+    @karyawans = @karyawans.where('nama_lengkap like :query or nik like :query', :query => "%#{params[:q].titleize}%") unless params[:q].nil?
     render json: @karyawans
   end
   def index
-    @karyawans = Karyawan.all
+    @karyawans = Karyawan.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

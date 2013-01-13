@@ -2,7 +2,7 @@ class GajisController < InternalController
   # GET /gajis
   # GET /gajis.json
   def index
-    @gajis = Gaji.all
+    @gajis = Gaji.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

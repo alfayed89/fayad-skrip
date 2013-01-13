@@ -7,6 +7,10 @@ gem 'compass-rails', '~> 1.0.3'
 # gem 'activeadmin' , :git => 'https://github.com/barock19/active_admin.git'
 gem 'devise'
 gem 'cancan'
+gem 'nokogiri'
+gem 'chronic_duration', :path => 'vendor/chronic_duration'
+gem 'will_paginate', '~> 3.0.0'
+
 group :test,  :development do
   gem 'rspec-rails'
   gem 'growl'

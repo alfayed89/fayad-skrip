@@ -14,7 +14,10 @@
 		.tbody
 			- @karyawans.each do |karyawan|
 				%tr
-					%td= karyawan.nama_lengkap
+					%td.span3
+						%b= karyawan.nama_lengkap
+						%br
+						%small="NIK : #{karyawan.nik}"
 					%td= karyawan.kelamin
 					%td= karyawan.npwp
 					%td= karyawan.gaji_pokok
@@ -25,5 +28,6 @@
 							= link_to 'Show', karyawan
 							= link_to 'Edit', edit_karyawan_path(karyawan)
 							= link_to 'Destroy', karyawan, method: :delete, data: { confirm: 'Are you sure?' }
+=will_paginate @cities
 %hr
 = link_to 'New Karyawan', new_karyawan_path

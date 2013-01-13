@@ -2,7 +2,7 @@ class PengalamenController < InternalController
   # GET /pengalamen
   # GET /pengalamen.json
   def index
-    @pengalamen = Pengalaman.all
+    @pengalamen = Pengalaman.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

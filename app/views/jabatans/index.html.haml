@@ -21,6 +21,7 @@
       %td= link_to 'Edit', edit_jabatan_path(jabatan)
       %td= link_to 'Destroy', jabatan, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+=will_paginate @jabatans 
+%hr
 
 = link_to 'New Jabatan', new_jabatan_path

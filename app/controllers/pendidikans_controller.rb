@@ -2,7 +2,7 @@ class PendidikansController < InternalController
   # GET /pendidikans
   # GET /pendidikans.json
   def index
-    @pendidikans = Pendidikan.all
+    @pendidikans = Pendidikan.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

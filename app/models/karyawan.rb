@@ -70,7 +70,19 @@ class Karyawan < ActiveRecord::Base
      end
   end
   
-  def have_absen_for_today?
-    absens.where(:absen_for => Time.now.to_date).last != nil
+  def absen_for_today
+    absens.where("absen_for = :absen_for", :absen_for => Time.now.to_date).last
+  end
+  def is_masuk_for_today?
+    a = absen_for_today
+    a.nil? ? false : a.status == "MASUK" 
+  end
+  def have_workoff_for_today?
+    a = absen_for_today
+    if !a.nil? and a.status == "MASUK"
+      a.real_time_earn.nil? == false
+    else
+      false
+    end
   end
 end

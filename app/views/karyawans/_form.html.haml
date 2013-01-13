@@ -49,11 +49,6 @@
 			.controls
 				= f.text_field :email
 		%hr
-		.control-group
-			= f.label :jabatan_id , :class => 'control-label'
-			.controls
-				=f.collection_select :jabatan_id, Jabatan.all, :id, :nama
-		%hr
 		%p Site Role
 		.control-group
 			=f.label :role, :class => 'control-label'
