@@ -44,6 +44,8 @@ db/*.sqlite3
 /capybara*
 /capybara-*.html
 /gems
+/public/uploads/*
+!/public/uploads/.gitkeep
 /spec/requests
 /spec/routing
 /spec/views
