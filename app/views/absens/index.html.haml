@@ -18,5 +18,4 @@
 				%td=absen.absen_for.strftime('%a, %e %b %Y')
 				%td=absen.onduty.strftime('%I:%M %p')
 				%th="#{(absen.real_time_earn.nil? ? '-' : absen.offduty.strftime('%I:%M %p') )}"
-- if @absens.size > 0
-	=will_paginate @posts 
+=will_paginate @absens
