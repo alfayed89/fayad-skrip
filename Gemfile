@@ -10,7 +10,7 @@ gem 'cancan'
 gem 'nokogiri'
 gem 'chronic_duration', :path => 'vendor/chronic_duration'
 gem 'will_paginate', '~> 3.0.0'
-gem 'fb_graph'
+gem 'twitter'
 group :test,  :development do
   gem 'rspec-rails'
   gem 'growl'

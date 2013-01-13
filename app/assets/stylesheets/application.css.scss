@@ -13,7 +13,9 @@
 @import "bootstrap";
 // @import "bootstrap-responsive";
 @import "iconmoon";
-
+.dont-screen {
+	display:none;	
+}
 #timeTracker{
 	#sc_drag_area_protector div{
 	  border-radius: 0px 0px;

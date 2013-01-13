@@ -16,9 +16,12 @@ class DashboardController < InternalController
   def upload_photo
     uploaded_io = params[:photo]
     begin
-      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file_name = "#{rand(999..9999999)}_pic.jpeg"
+      File.open(Rails.root.join('public', 'uploads', file_name ), 'wb') do |file|
         file.write(uploaded_io.read)
       end
+      t = Twitter.update_with_media('#cuma-test #skripsi #please-jgn-reply '+Time.now.to_s, File.new('./public/uploads/'+file_name))
+      current_karyawan.update_attribute('photo_url', t.attrs[:entities][:media][0][:media_url])
       flash[:success] = "Photo Berhasil diperbaharui"
     rescue Exception => e
       flash[:error] = e.message

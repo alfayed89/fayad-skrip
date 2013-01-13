@@ -1,4 +1,13 @@
-%h2 Rekap Gaji
+.row-fluid
+	.span6
+		%h2 Rekap Gaji #{current_karyawan.nama_lengkap}
+	.span6
+		.pull-right.dont-print 
+			%a.btn.btn-large#print{:href => url_for(:action => :salary)}
+				%i.icon.icon-printer
+				Print
+
+
 %hr
 %table.table.table-striped
 	%thead
@@ -18,3 +27,15 @@
 				%td=money_formater(gaji.jamsostek)
 				%td=money_formater(gaji.pajak)
 				%td=money_formater(gaji.final_amount)
+
+.row-fluid.dont-screen
+	.span8
+	.span4
+		.center-text
+			= "Jakarta, #{Time.now.strftime('%a, %e %b %Y')}"
+			%br
+			%br
+			%br
+			%br
+			%hr
+			=current_karyawan.nama_lengkap
