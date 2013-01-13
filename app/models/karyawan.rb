@@ -8,7 +8,7 @@ class Karyawan < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :agama, :alamat, :jabatan_id, :kelamin, :city_id, :nama_lengkap, :nik, :npwp
+  attr_accessible :agama, :alamat, :jabatan_id, :kelamin, :city_id, :nama_lengkap, :nik, :npwp, :photo_url
   attr_accessible :tanggal_lahir, :tempat_lahir, :gaji_pokok, :roles
   
   belongs_to :jabatan
@@ -23,7 +23,9 @@ class Karyawan < ActiveRecord::Base
   
   attr_accessible :login
   attr_accessor :login
-  
+  def photo_url
+    read_attribute(:photo_url).nil? ? '/static.asset/anonymous_avatar.jpg' : read_attribute(:photo_url)
+  end
   def holydays_taken_in_year
     holydays.where(:approved_at => (Time.now.beginning_of_year)..(Time.now.end_of_year), :approved => true).sum(:day_duration)
   end

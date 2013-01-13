@@ -1,0 +1,21 @@
+%h2 Data Absen 
+%hr
+%table.table
+	%thead
+		%tr
+			%th Karyawan
+			%th Status
+			%th.span5 Reason
+			%th Tanggal Kerja
+			%th Masuk
+			%th Pulang
+	%tbody
+		- for absen in @absens
+			%tr
+				%td=link_to absen.karyawan.nama_lengkap, karyawan_path(absen.karyawan)
+				%td=absen.status
+				%td=absen.reason
+				%td=absen.absen_for.strftime('%a, %e %b %Y')
+				%td=absen.onduty.strftime('%I:%M %p')
+				%th="#{(absen.real_time_earn.nil? ? '-' : absen.offduty.strftime('%I:%M %p') )}"
+=will_paginate @absens

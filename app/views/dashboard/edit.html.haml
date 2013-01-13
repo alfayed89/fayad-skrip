@@ -1,5 +1,22 @@
 %h3 Edit Data Pribadi
 %hr
+.well
+	=form_tag({:action => :upload_photo}, :multipart => true, :method => :put) do
+		%h5 Upload Photo
+		%hr 
+		.row-fluid
+			.span2
+				=image_tag(current_karyawan.photo_url, :class => "img-polaroid", :width => 100)
+			.span10
+				.form-horizontal
+					.control-group
+						%label.control-label Pilih File
+						.controls
+							=file_field_tag 'photo'
+				.form-actions
+					%button.btn Upload
+
+%hr			
 =form_for(@karyawan, :url => dashboard_edit_path, :method => :put) do |f|
 	.form-horizontal	
 		.control-group

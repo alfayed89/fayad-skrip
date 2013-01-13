@@ -37,7 +37,7 @@
 				%td Email
 				%td=@karyawan.email
 	.span4
-		=image_tag('https://secure.gravatar.com/avatar/9601cebd47e3bc0ebb245caca9290b9c?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png', :class => 'img-polaroid')
+		=image_tag(current_karyawan.photo_url, :class => 'img-polaroid')
 %h4 
 	%i.icon.icon-list-2
 	Pengalaman

@@ -13,11 +13,23 @@ class DashboardController < InternalController
   before_filter(:only => [:edit, :update]) do
       @karyawan = current_karyawan
   end
+  def upload_photo
+    uploaded_io = params[:photo]
+    begin
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      flash[:success] = "Photo Berhasil diperbaharui"
+    rescue Exception => e
+      flash[:error] = e.message
+    end
+
+    redirect_to :action => :edit
+  end
   def index
   end
   
   def edit
-  
   end
   
   def update
@@ -55,7 +67,9 @@ class DashboardController < InternalController
       redirect_to url_for(:action => :index)
     end
   end
-  
+  def absens
+    @absens = current_karyawan.absens.page(params[:page])
+  end
   def vacation
     @holyday = Holyday.new
   end
