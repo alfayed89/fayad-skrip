@@ -23,8 +23,13 @@
       %td= pengalaman.reason
       %td= pengalaman.karyawan_id
       %td= link_to 'Show', pengalaman
-      %td= link_to 'Edit', edit_pengalaman_path(pengalaman)
-      %td= link_to 'Destroy', pengalaman, method: :delete, data: { confirm: 'Are you sure?' }
+
+      %td
+        -if can?([:edit], pengalaman)
+          = link_to 'Edit', edit_pengalaman_path(pengalaman)
+      %td
+        -if can?([:destroy], pengalaman)
+          = link_to 'Destroy', pengalaman, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @pengalamen
 %hr

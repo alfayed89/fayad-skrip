@@ -22,8 +22,12 @@
       %td= gaji.other_desc
       %td= gaji.other_value
       %td= link_to 'Show', gaji
-      %td= link_to 'Edit', edit_gaji_path(gaji)
-      %td= link_to 'Destroy', gaji, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        -if can?(:edit, gaji)
+          = link_to 'Edit', edit_gaji_path(gaji)
+      %td
+        -if can?(:destroy, gaji)
+          = link_to 'Destroy', gaji, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @gajis
 = link_to '<i class="icon icon-plus"></i> Input Gaji'.html_safe, new_gaji_path, :class => "btn btn-primary"

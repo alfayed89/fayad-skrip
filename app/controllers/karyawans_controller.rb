@@ -7,8 +7,9 @@ class KaryawansController < InternalController
     render json: @karyawans
   end
   def index
-    @karyawans = Karyawan.page(params[:page])
+    # @karyawans = Karyawan.page(params[:page])
 
+    @karyawans = @karyawans.where('nama_lengkap like :q or nik like :q', :q => "%#{params[:q]}%") unless params[:q].nil?
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @karyawans }

@@ -18,8 +18,12 @@
       %td= jabatan.keterangan
 
       %td= link_to 'Show', jabatan
-      %td= link_to 'Edit', edit_jabatan_path(jabatan)
-      %td= link_to 'Destroy', jabatan, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        -if can?(:edit, jabatan)
+          = link_to 'Edit', edit_jabatan_path(jabatan)
+      %td
+        -if can?(:destroy, jabatan)
+          = link_to 'Destroy', jabatan, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @jabatans 
 %hr

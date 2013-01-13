@@ -1,5 +1,13 @@
+
 %p#notice= notice
-%h2.dont-print Data Karyawan
+.row-fluid.dont-print 
+	.span6
+		%h2.dont-print Data Karyawan
+	.span6
+		.pull-right
+			%a.btn.btn-large#print{:href => karyawan_path(@karyawan, :print_l => 1)}
+				%i.icon.icon-printer
+				Print
 %hr
 .row-fluid
 	.span8

@@ -13,8 +13,12 @@
       %td= city.nama
       %td= city.province.nama
       %td= link_to 'Show', city
-      %td= link_to 'Edit', edit_city_path(city)
-      %td= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        -if can?(:edit, city)
+          = link_to 'Edit', edit_city_path(city)
+      %td
+        -if can?(:destroy, city)
+          = link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @cities
 %hr

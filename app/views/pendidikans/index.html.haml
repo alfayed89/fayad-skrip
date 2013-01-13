@@ -21,8 +21,12 @@
       %td= pendidikan.from
       %td= pendidikan.to
       %td= link_to 'Show', pendidikan
-      %td= link_to 'Edit', edit_pendidikan_path(pendidikan)
-      %td= link_to 'Destroy', pendidikan, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        -if can?(:edit, pendidikan)
+          = link_to 'Edit', edit_pendidikan_path(pendidikan)
+      %td
+        -if can?(:destroy, pendidikan)
+          = link_to 'Destroy', pendidikan, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @pendidikans
 %hr

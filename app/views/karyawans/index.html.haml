@@ -1,4 +1,11 @@
-%h2 Daftar Karyawan
+.row-fluid
+	.span4
+		%h2 Daftar Karyawan
+	.span8
+		.pull-right
+			%form.form-search{:action => karyawans_path, :method => :get}
+				%input{:type => :text, :name => 'q', :class => "search-query", :placeholder => "Nama atau NIK", :value => params[:q]}
+				%button.btn Cari
 %hr
 .row-fluid
 	%table.table.table-bordered.table-stripped
@@ -26,8 +33,9 @@
 					%td.span3
 						.center-text
 							= link_to 'Show', karyawan
-							= link_to 'Edit', edit_karyawan_path(karyawan)
-							= link_to 'Destroy', karyawan, method: :delete, data: { confirm: 'Are you sure?' }
-=will_paginate @cities
+							-if can?([:edit, :destroy], karyawan)
+								= link_to 'Edit', edit_karyawan_path(karyawan)
+								= link_to 'Destroy', karyawan, method: :delete, data: { confirm: 'Are you sure?' }
+/ =will_paginate @cities
 %hr
 = link_to 'New Karyawan', new_karyawan_path

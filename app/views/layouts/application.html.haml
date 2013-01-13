@@ -9,13 +9,17 @@
 		= stylesheet_link_tag :print, :media => "print"
 		= javascript_include_tag :application
 		= stylesheet_link_tag :responsive, :media => "screen"
-		
+		=javascript_include_tag '/static.asset/jq.print.js'
+		:javascript
+			$(document).ready(function(){
+				$('#print').printPage();
+			})
 		= javascript_include_tag '/static.asset/jquery-ui/js/jquery-ui-1.9.2.custom'
 		= stylesheet_link_tag '/static.asset/jquery-ui/css/cupertino/jquery-ui-1.9.2.custom.min'
 		= csrf_meta_tags
 	%body
 		.container
-			.head
+			.head.dont-print 
 				.row-fluid
 					.span1
 						=image_tag('/assets/logo.jpg')
@@ -26,10 +30,10 @@
 				%hr
 			.row-fluid
 				-if current_karyawan
-					.span3
+					.span3.dont-print 
 						.sidebar
 							=render 'layouts/navigation'
-				.span9
+				.span9#component-main
 					.body
 						=render 'layouts/messages'
 						=yield

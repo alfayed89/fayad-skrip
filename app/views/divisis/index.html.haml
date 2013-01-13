@@ -13,8 +13,12 @@
       %td= divisi.nama
       %td= divisi.keterangan
       %td= link_to 'Show', divisi
-      %td= link_to 'Edit', edit_divisi_path(divisi)
-      %td= link_to 'Destroy', divisi, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        -if can?(:edit, divisi)
+          = link_to 'Edit', edit_divisi_path(divisi)
+      %td
+        -if can?(:destroy, divisi)
+          = link_to 'Destroy', divisi, method: :delete, data: { confirm: 'Are you sure?' }
 
 
 =will_paginate @divisis

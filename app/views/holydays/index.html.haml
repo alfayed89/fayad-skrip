@@ -36,8 +36,10 @@
 						="-"
 				%td
 					=link_to 'Show', holyday
-					=link_to 'Edit', edit_holyday_path(holyday)
-					=link_to 'Destroy', holyday, method: :delete, data: { confirm: 'Are you sure?' }
+					- if can?(:edit , holyday)
+						=link_to 'Edit', edit_holyday_path(holyday)
+					- if can?(:destroy , holyday)
+						=link_to 'Destroy', holyday, method: :delete, data: { confirm: 'Are you sure?' }
 
 =will_paginate @holydays 
 %hr
