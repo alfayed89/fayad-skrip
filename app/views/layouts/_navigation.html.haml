@@ -9,7 +9,7 @@
 		=current_karyawan.role.titleize
 		%p
 			%small
-				=link_to '<i class="icon icon-pencil"></i> Edit'.html_safe
+				=link_to '<i class="icon icon-pencil"></i> Edit'.html_safe, dashboard_edit_path
 				|
 				=link_to '<i class="icon icon-unlocked"></i> Keluar'.html_safe, destroy_karyawan_session_path, :method => :delete
 %hr

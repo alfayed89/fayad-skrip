@@ -10,7 +10,24 @@ class DashboardController < InternalController
   before_filter(:only => [:pengalaman, :create_pengalaman]) do
     @pengalamen = current_karyawan.pengalamen
   end
+  before_filter(:only => [:edit, :update]) do
+      @karyawan = current_karyawan
+  end
   def index
+  end
+  
+  def edit
+  
+  end
+  
+  def update
+    if @karyawan.update_attributes(params[:karyawan])
+      flash[:success] = "Data Pribadi Berhasil diperbaharui"
+      redirect_to :action => :index
+    else
+      flash[:error] = "Maaf, Ada yang salah dengan form yang anda isi"
+      render :action => :edit
+    end
   end
   
   def absen
